@@ -45,7 +45,12 @@ httpServer.post('/call/', async (req, res) => {
   let interval = setInterval(async () => {
     let status = await bridge.getStatus();
     console.log(status);
-    if (status === 'ANSWERED' || status === 'FAILED' || status === 'BUSY' || status === 'NO ANSWER') {
+    if (
+      status === 'ANSWERED' ||
+      status === 'FAILED' ||
+      status === 'BUSY' ||
+      status === 'NO ANSWER'
+    ) {
       console.log('stop');
       clearInterval(interval);
     }
