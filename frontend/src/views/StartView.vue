@@ -16,20 +16,16 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { defaultPost } from '../services/api.service';
 
 const phoneNumber = ref('');
 const router = useRouter();
 
 const call = async (): Promise<void> => {
-  let responseStream = await fetch('http://localhost:3000/call/', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-    body: JSON.stringify({ number: phoneNumber.value }),
+  let callData = await defaultPost('call/', {
+    number: phoneNumber.value,
   });
-  let response = await responseStream.json();
 
-  router.push({ name: 'ringing', params: { callsId: response.id } });
+  router.push({ name: 'ringing', params: { callsId: callData.id } });
 };
 </script>
