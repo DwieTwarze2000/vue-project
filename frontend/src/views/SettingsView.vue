@@ -120,35 +120,6 @@ const setNewTheme = (theme: Theme): void => {
   font-size: 20px;
 }
 
-.main-button {
-  background-color: var(--unactive-button-bg-color);
-  border-radius: 16px;
-  cursor: pointer;
-  font-size: 16px;
-  color: var(--unactive-button-color);
-  border: none;
-  min-width: 150px;
-}
-.main-button:hover {
-  background-color: var(--unactive-button-hover-color);
-  color: var(--unactive-button-color);
-}
-.main-button:active {
-  position: relative;
-  top: 5px;
-  color: var(--unactive-button-color);
-}
-
-.main-button.active {
-  background-color: var(--active-button-bg-color);
-  color: var(--active-button-color);
-  font-weight: 400;
-}
-
-.main-button.active:hover {
-  background-color: var(--active-button-hover-color);
-}
-
 table {
   border-collapse: separate;
   border-spacing: 0 20px;

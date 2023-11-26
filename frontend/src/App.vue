@@ -14,7 +14,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto m-2">
+          <button class="btn main-button active">Zaloguj</button>
+          <ul class="navbar-nav ms-auto m-2 d-flex align-items-center">
             <li class="nav-item mx-2 mx-sm-0">
               <router-link
                 :to="{ name: 'start' }"
@@ -60,12 +61,10 @@ const $route = useRoute();
 </script>
 <style>
 :root {
-  --active-button-bg-color: #2e9a53;
-  --active-button-color: #ffffff;
-  --active-button-hover-color: #258346;
-  --unactive-button-bg-color: #af0e0e;
-  --unactive-button-color: #ffffff;
-  --unactive-button-hover-color: #f00e0e;
+  --light-green: #2e9a53;
+  --darker-green: #258346;
+  --light-red: #f00e0e;
+  --dark-red: #af0e0e;
 }
 
 body {
@@ -90,5 +89,34 @@ body {
 
 .nav-link:hover {
   color: var(--color);
+}
+
+.main-button {
+  background-color: var(--dark-red);
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffff;
+  border: none;
+  min-width: 150px;
+}
+.main-button:hover {
+  background-color: var(--light-red);
+  color: #ffffff;
+}
+.main-button:active {
+  position: relative;
+  top: 5px;
+  color: #ffffff;
+}
+
+.main-button.active {
+  background-color: var(--light-green);
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.main-button.active:hover {
+  background-color: var(--darker-green);
 }
 </style>
