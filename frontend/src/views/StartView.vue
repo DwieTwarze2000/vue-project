@@ -4,6 +4,7 @@
     <label class="form-label clearfix" for="form-number">
       Wprowadź numer
     </label>
+    <br />
     <input
       v-model="phoneNumber"
       class="form-number clearfix"

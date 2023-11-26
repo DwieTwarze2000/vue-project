@@ -1,92 +1,69 @@
 <template>
-  <div class="window">
+  <div>
+    <nav class="navbar navbar-expand-sm">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler border-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto m-2">
+            <li class="nav-item mx-2 mx-sm-0">
+              <router-link
+                :to="{ name: 'start' }"
+                class="nav-link"
+                :class="{ active: $route.name === 'start' }"
+                >Strona główna</router-link
+              >
+            </li>
+            <li class="nav-item mx-2 mx-sm-0">
+              <router-link :to="{ name: 'start' }" class="nav-link"
+                >Historia połączeń</router-link
+              >
+            </li>
+            <li class="nav-item mx-2 mx-sm-0">
+              <router-link
+                :to="{ name: 'settings' }"
+                class="nav-link"
+                :class="{ active: $route.name === 'settings' }"
+                >Ustawienia</router-link
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <router-view />
   </div>
 </template>
+
+<script setup lang="ts">
+import { useRoute } from 'vue-router';
+
+const $route = useRoute();
+</script>
 <style>
-.window {
-  width: 800px;
-  height: 500px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  background: rgb(255, 204, 0);
-  border-radius: 20px;
-  box-sizing: border-box;
-  padding: 20px;
-  text-align: center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
-}
-.clearfix:after {
-  content: '';
-  clear: both;
-  display: table;
-}
-.close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.15em;
-}
-.box {
-  text-align: center;
-}
-.text {
-  font-size: 40px;
-  font-weight: bold;
-  margin-top: 30px;
-}
-.header,
-.form-number {
-  margin-bottom: 50px;
-}
-.header {
-  margin-top: 50px;
-  font-size: 38px;
-  font-weight: 600;
-}
-.form-label {
-  font-size: 32px;
-  font-weight: 600;
-}
-.form-number {
-  width: 400px;
-  height: 55px;
-  padding: 20px;
-  box-sizing: border-box;
-  font-size: 28px;
-  letter-spacing: 2px;
-  text-align: center;
-}
-.call-button,
-.call-button-bottom {
-  width: 300px;
-  height: 75px;
-  vertical-align: middle;
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 75px;
-  background: #008000;
-  cursor: pointer;
-  color: #fff;
-  border-radius: 20px;
-  margin: 0 auto;
+body {
+  background: #aabff3;
+  font-family: 'Roboto', sans-serif;
 }
 
-.call-button-bottom {
-  margin-top: 300px;
+.active {
+  font-weight: bold;
 }
-.call-button:hover {
-  filter: brightness(80%);
+
+.border-none {
+  border: none;
 }
-.error {
-  border: 1px solid #ff0000;
-  background: rgb(255, 170, 170);
+
+.nav-link {
+  cursor: pointer;
 }
 </style>

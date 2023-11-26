@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Start from '../views/StartView.vue';
 import Ringing from '../views/RingingView.vue';
+import Settings from '../views/SettingsView.vue';
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     name: 'ringing',
     component: Ringing,
     props: true,
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    component: Settings,
   },
 ];
 
