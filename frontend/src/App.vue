@@ -45,18 +45,38 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
+import { Theme } from './types/theme.type';
+import { getTheme, setThemeColors } from './utils/theme.utils';
+
+let activeTheme = ref(getTheme());
+watchEffect((): void => {
+  const theme: Theme = activeTheme.value;
+  setThemeColors(theme);
+});
 
 const $route = useRoute();
 </script>
 <style>
+:root {
+  --active-button-bg-color: #2e9a53;
+  --active-button-color: #ffffff;
+  --active-button-hover-color: #258346;
+  --unactive-button-bg-color: #af0e0e;
+  --unactive-button-color: #ffffff;
+  --unactive-button-hover-color: #f00e0e;
+}
+
 body {
-  background: #aabff3;
+  background: var(--bg-color);
+  color: var(--color);
   font-family: 'Roboto', sans-serif;
 }
 
 .active {
   font-weight: bold;
+  color: var(--color);
 }
 
 .border-none {
@@ -65,5 +85,10 @@ body {
 
 .nav-link {
   cursor: pointer;
+  color: var(--color) !important;
+}
+
+.nav-link:hover {
+  color: var(--color);
 }
 </style>

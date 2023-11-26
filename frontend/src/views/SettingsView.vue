@@ -2,7 +2,19 @@
   <div>
     <div class="title mb-5 mt-2 ms-1 ms-sm-4">
       <h2 class="d-flex align-items-center">
-        <img src="../assets/settings-dark.svg" class="me-3" />Ustawienia
+        <!-- if light -->
+        <img
+          v-if="activeTheme === Theme.LIGHT"
+          src="../assets/settings-dark.svg"
+          class="me-3 settings-icon"
+        />
+        <img
+          v-else
+          src="../assets/settings-light.svg"
+          class="me-3 settings-icon"
+        />
+
+        Ustawienia
       </h2>
     </div>
     <div class="ms-2 ms-sm-5">
@@ -18,8 +30,20 @@
         <tr>
           <td class="prop pe-4">Motyw:</td>
           <td class="d-flex flex-row align-items-center flex-wrap">
-            <button class="btn main-button active me-3">Jasny</button>
-            <button class="btn main-button me-3">Ciemny</button>
+            <button
+              class="btn main-button me-3"
+              @click="setNewTheme(Theme.LIGHT)"
+              :class="{ active: activeTheme === Theme.LIGHT }"
+            >
+              Jasny
+            </button>
+            <button
+              class="btn main-button me-3"
+              @click="setNewTheme(Theme.DARK)"
+              :class="{ active: activeTheme === Theme.DARK }"
+            >
+              Ciemny
+            </button>
           </td>
         </tr>
       </table>
@@ -53,7 +77,13 @@
       <div class="users d-flex flex-row gap-3 mt-4 flex-wrap">
         <div class="user p-4 d-flex flex-column text-center">
           <img src="../assets/x-symbol.svg" class="delete" />
-          <img src="../assets/user-dark.svg" alt="user" class="mb-2" />
+          <img
+            v-if="activeTheme === Theme.LIGHT"
+            src="../assets/user-dark.svg"
+            alt="user"
+            class="mb-2"
+          />
+          <img v-else src="../assets/user-light.svg" alt="user" class="mb-2" />
           <p class="mb-2">Jacek</p>
           <p>532 232 321</p>
         </div>
@@ -67,7 +97,19 @@
     </div>
   </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { saveTheme, getTheme, setThemeColors } from '../utils/theme.utils';
+import { ref, watchEffect } from 'vue';
+import { Theme } from '../types/theme.type';
+
+let activeTheme = ref(getTheme());
+
+const setNewTheme = (theme: Theme): void => {
+  saveTheme(theme);
+  setThemeColors(theme);
+  activeTheme.value = theme;
+};
+</script>
 <style scoped>
 .title h2 {
   font-weight: bold;
@@ -79,32 +121,32 @@
 }
 
 .main-button {
-  background-color: #af0e0e;
+  background-color: var(--unactive-button-bg-color);
   border-radius: 16px;
   cursor: pointer;
   font-size: 16px;
-  color: white;
+  color: var(--unactive-button-color);
   border: none;
   min-width: 150px;
 }
 .main-button:hover {
-  background-color: #f00e0e;
-  color: white;
+  background-color: var(--unactive-button-hover-color);
+  color: var(--unactive-button-color);
 }
 .main-button:active {
   position: relative;
   top: 5px;
-  color: white;
+  color: var(--unactive-button-color);
 }
 
 .main-button.active {
-  background-color: #2e9a53;
-  color: white;
+  background-color: var(--active-button-bg-color);
+  color: var(--active-button-color);
   font-weight: 400;
 }
 
 .main-button.active:hover {
-  background-color: #258346;
+  background-color: var(--active-button-hover-color);
 }
 
 table {
@@ -118,7 +160,7 @@ input {
 }
 
 .user {
-  background-color: #bfd1ff;
+  background-color: var(--bg-color-secondary);
   border-radius: 16px;
   min-width: 175px;
   position: relative;
@@ -133,5 +175,9 @@ input {
   width: 15px;
   top: 5px;
   right: 5px;
+}
+
+.settings-icon {
+  width: 32px;
 }
 </style>

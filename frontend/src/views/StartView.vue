@@ -18,14 +18,14 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { defaultPost } from '../services/api.service';
-import { formatPhoneNumber } from '../utils/call.utils';
+import { cleanPhoneNumber } from '../utils/phone.utils';
 
 const phoneNumber = ref('');
 const router = useRouter();
 
 const call = async (): Promise<void> => {
   let callData = await defaultPost('call/', {
-    number: formatPhoneNumber(phoneNumber.value),
+    number: cleanPhoneNumber(phoneNumber.value),
   });
 
   router.push({ name: 'ringing', params: { callsId: callData.id } });
