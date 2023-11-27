@@ -84,7 +84,7 @@
         </tr>
         <tr>
           <td>
-            <button class="btn main-button me-3">
+            <button class="btn main-button me-3 cancel">
               {{ $t('settings.cancel') }}
             </button>
           </td>
@@ -98,7 +98,12 @@
 
       <div class="users d-flex flex-row gap-3 mt-4 flex-wrap">
         <div class="user p-4 d-flex flex-column text-center">
-          <img src="../assets/x-symbol.svg" class="delete" />
+          <img
+            v-if="activeTheme === Theme.LIGHT"
+            src="../assets/x-symbol.svg"
+            class="delete"
+          />
+          <img v-else src="../assets/x-symbol_white.svg" class="delete" />
           <img
             v-if="activeTheme === Theme.LIGHT"
             src="../assets/user-dark.svg"
@@ -163,7 +168,7 @@ input {
 }
 
 .user {
-  background-color: var(--bg-color-secondary);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   min-width: 175px;
   position: relative;

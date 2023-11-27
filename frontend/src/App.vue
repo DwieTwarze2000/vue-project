@@ -69,10 +69,17 @@ const $route = useRoute();
   --dark-red: #af0e0e;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background: var(--bg-color);
   color: var(--color);
   font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
 }
 
 .active {
@@ -94,7 +101,7 @@ body {
 }
 
 .main-button {
-  background-color: var(--dark-red);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   cursor: pointer;
   font-size: 16px;
@@ -103,9 +110,18 @@ body {
   min-width: 150px;
 }
 .main-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+.cancel {
   background-color: var(--light-red);
   color: #ffffff;
 }
+
+.cancel:hover {
+  background-color: var(--dark-red);
+}
+
 .main-button:active {
   position: relative;
   top: 5px;

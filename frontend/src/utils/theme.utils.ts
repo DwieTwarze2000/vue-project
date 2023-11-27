@@ -15,18 +15,16 @@ export const getTheme = (): Theme => {
 export const setThemeColors = (theme: Theme): void => {
   switch (theme) {
     case Theme.LIGHT:
-      document.documentElement.style.setProperty('--bg-color', '#aabff3');
       document.documentElement.style.setProperty(
-        '--bg-color-secondary',
-        '#bfd1ff'
+        '--bg-color',
+        'linear-gradient(168deg, #E84062 0%, #F6AB60 79.17%)'
       );
       document.documentElement.style.setProperty('--color', '#000000');
       break;
     case Theme.DARK:
-      document.documentElement.style.setProperty('--bg-color', '#0a1d50');
       document.documentElement.style.setProperty(
-        '--bg-color-secondary',
-        '#0f2c79'
+        '--bg-color',
+        'linear-gradient(168deg, #0a1d50 0%, #440384 79.17%)'
       );
       document.documentElement.style.setProperty('--color', '#ffffff');
       break;
