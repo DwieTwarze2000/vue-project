@@ -1,0 +1,31 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "settings": "Einstellungen",
+    "phoneCallHistory": "Anrufverlauf",
+    "logout": "Abmelden",
+    "login": "Anmelden"
+  },
+
+  "settings": {
+    "title": "Einstellungen",
+    "language": {
+      "title": "Sprache",
+      "polish": "Polnisch",
+      "english": "Englisch",
+      "german": "Deutsch"
+    },
+    "theme": {
+      "title": "Thema",
+      "light": "Hell",
+      "dark": "Dunkel"
+    },
+    "addUser": {
+      "title": "Benutzer hinzufügen",
+      "name": "Name",
+      "phoneNumber": "Telefonnummer"
+    },
+    "cancel": "Abbrechen",
+    "save": "Speichern"
+  }
+}

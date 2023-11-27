@@ -1,0 +1,31 @@
+{
+  "navigation": {
+    "home": "Strona główna",
+    "phoneCallHistory": "Historia połączeń",
+    "settings": "Ustawienia",
+    "logout": "Wyloguj",
+    "login": "Zaloguj"
+  },
+
+  "settings": {
+    "title": "Ustawienia",
+    "language": {
+      "title": "Język",
+      "polish": "Polski",
+      "english": "Angielski",
+      "german": "Niemiecki"
+    },
+    "theme": {
+      "title": "Motyw",
+      "light": "Jasny",
+      "dark": "Ciemny"
+    },
+    "addUser": {
+      "title": "Dodaj użytkownika",
+      "name": "Imię",
+      "phoneNumber": "Numer telefonu"
+    },
+    "cancel": "Anuluj",
+    "save": "Zapisz"
+  }
+}

@@ -14,62 +14,84 @@
           class="me-3 settings-icon"
         />
 
-        Ustawienia
+        {{ $t('settings.title') }}
       </h2>
     </div>
     <div class="ms-2 ms-sm-5">
       <table>
         <tr>
-          <td class="prop pe-4">Język:</td>
+          <td class="prop pe-4">{{ $t('settings.language.title') }}:</td>
           <td class="d-flex flex-row align-items-center flex-wrap">
-            <button class="btn main-button me-3">Polski</button>
-            <button class="btn main-button active me-3">Angielski</button>
-            <button class="btn main-button">Niemiecki</button>
+            <button
+              class="btn main-button me-3"
+              @click="setNewLanguage(Language.PL)"
+              :class="{ active: activeLanguage === Language.PL }"
+            >
+              {{ $t('settings.language.polish') }}
+            </button>
+            <button
+              class="btn main-button me-3"
+              @click="setNewLanguage(Language.EN)"
+              :class="{ active: activeLanguage === Language.EN }"
+            >
+              {{ $t('settings.language.english') }}
+            </button>
+            <button
+              class="btn main-button"
+              @click="setNewLanguage(Language.DE)"
+              :class="{ active: activeLanguage === Language.DE }"
+            >
+              {{ $t('settings.language.german') }}
+            </button>
           </td>
         </tr>
         <tr>
-          <td class="prop pe-4">Motyw:</td>
+          <td class="prop pe-4">{{ $t('settings.theme.title') }}:</td>
           <td class="d-flex flex-row align-items-center flex-wrap">
             <button
               class="btn main-button me-3"
               @click="setNewTheme(Theme.LIGHT)"
               :class="{ active: activeTheme === Theme.LIGHT }"
             >
-              Jasny
+              {{ $t('settings.theme.light') }}
             </button>
             <button
               class="btn main-button me-3"
               @click="setNewTheme(Theme.DARK)"
               :class="{ active: activeTheme === Theme.DARK }"
             >
-              Ciemny
+              {{ $t('settings.theme.dark') }}
             </button>
           </td>
         </tr>
       </table>
 
       <button class="btn main-button active me-3 mt-4">
-        Dodaj użytkownika
+        {{ $t('settings.addUser.title') }}
       </button>
       <table>
         <tr>
-          <td class="prop pe-4">Imie:</td>
+          <td class="prop pe-4">{{ $t('settings.addUser.name') }}:</td>
           <td>
             <input type="text" />
           </td>
         </tr>
         <tr>
-          <td class="prop pe-4">Numer telefonu:</td>
+          <td class="prop pe-4">{{ $t('settings.addUser.phoneNumber') }}:</td>
           <td>
             <input type="text" />
           </td>
         </tr>
         <tr>
           <td>
-            <button class="btn main-button me-3">Anuluj</button>
+            <button class="btn main-button me-3">
+              {{ $t('settings.cancel') }}
+            </button>
           </td>
           <td class="d-flex">
-            <button class="btn main-button active me-3">Zapisz</button>
+            <button class="btn main-button active me-3">
+              {{ $t('settings.save') }}
+            </button>
           </td>
         </tr>
       </table>
@@ -99,15 +121,25 @@
 </template>
 <script setup lang="ts">
 import { saveTheme, getTheme, setThemeColors } from '../utils/theme.utils';
+import { getLanguage, saveLanguage } from '../utils/language.utils';
 import { ref, watchEffect } from 'vue';
 import { Theme } from '../types/theme.type';
+import { Language } from '../types/i18n.type';
+import { i18n } from '../main';
 
 let activeTheme = ref(getTheme());
+let activeLanguage = ref(getLanguage());
 
 const setNewTheme = (theme: Theme): void => {
   saveTheme(theme);
   setThemeColors(theme);
   activeTheme.value = theme;
+};
+
+const setNewLanguage = (language: Language): void => {
+  saveLanguage(language);
+  i18n.global.locale = language;
+  activeLanguage.value = language;
 };
 </script>
 <style scoped>

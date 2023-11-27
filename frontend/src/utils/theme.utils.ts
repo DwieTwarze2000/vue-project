@@ -4,8 +4,12 @@ export const saveTheme = (theme: Theme): void => {
   localStorage.setItem('theme', theme);
 };
 
-export const getTheme = (): any => {
-  return localStorage.getItem('theme') || Theme.LIGHT;
+export const getTheme = (): Theme => {
+  const theme = localStorage.getItem('theme');
+  if (theme) {
+    return theme as Theme;
+  }
+  return Theme.LIGHT;
 };
 
 export const setThemeColors = (theme: Theme): void => {

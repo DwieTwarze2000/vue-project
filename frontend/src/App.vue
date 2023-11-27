@@ -14,27 +14,29 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <button class="btn main-button active">Zaloguj</button>
+          <button class="btn main-button active">
+            {{ $t('navigation.login') }}
+          </button>
           <ul class="navbar-nav ms-auto m-2 d-flex align-items-center">
             <li class="nav-item mx-2 mx-sm-0">
               <router-link
                 :to="{ name: 'start' }"
                 class="nav-link"
                 :class="{ active: $route.name === 'start' }"
-                >Strona główna</router-link
+                >{{ $t('navigation.home') }}</router-link
               >
             </li>
             <li class="nav-item mx-2 mx-sm-0">
-              <router-link :to="{ name: 'start' }" class="nav-link"
-                >Historia połączeń</router-link
-              >
+              <router-link :to="{ name: 'start' }" class="nav-link">{{
+                $t('navigation.phoneCallHistory')
+              }}</router-link>
             </li>
             <li class="nav-item mx-2 mx-sm-0">
               <router-link
                 :to="{ name: 'settings' }"
                 class="nav-link"
                 :class="{ active: $route.name === 'settings' }"
-                >Ustawienia</router-link
+                >{{ $t('navigation.settings') }}</router-link
               >
             </li>
           </ul>
