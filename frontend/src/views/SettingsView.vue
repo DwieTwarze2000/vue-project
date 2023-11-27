@@ -169,6 +169,9 @@ input {
 
 .user {
   background-color: rgba(255, 255, 255, 0.1);
+
+  color: var(--color);
+
   border-radius: 16px;
   min-width: 175px;
   position: relative;

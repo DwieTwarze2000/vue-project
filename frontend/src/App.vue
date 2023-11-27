@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-sm">
+    <nav v-if="showNavigation()" class="navbar navbar-expand-sm">
       <div class="container-fluid">
         <button
           class="navbar-toggler border-none"
@@ -14,7 +14,10 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <button class="btn main-button active">
+          <button
+            class="btn main-button active"
+            @click="$router.push({ name: 'login' })"
+          >
             {{ $t('navigation.login') }}
           </button>
           <ul class="navbar-nav ms-auto m-2 d-flex align-items-center">
@@ -60,6 +63,11 @@ watchEffect((): void => {
 });
 
 const $route = useRoute();
+
+const showNavigation = (): boolean => {
+  const excludedRoutes = ['/login', '/register'];
+  return !excludedRoutes.includes($route.path);
+};
 </script>
 <style>
 :root {
@@ -77,14 +85,14 @@ const $route = useRoute();
 
 body {
   background: var(--bg-color);
-  color: var(--color);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
   font-family: 'Roboto', sans-serif;
-  min-height: 100vh;
 }
 
 .active {
   font-weight: bold;
-  color: var(--color);
 }
 
 .border-none {
@@ -93,7 +101,7 @@ body {
 
 .nav-link {
   cursor: pointer;
-  color: var(--color) !important;
+  color: white !important;
 }
 
 .nav-link:hover {
