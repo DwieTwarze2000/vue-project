@@ -145,4 +145,14 @@ body {
 .main-button.active:hover {
   background-color: var(--darker-green);
 }
+
+.login-input {
+  width: 400px;
+}
+
+@media (max-width: 420px) {
+  .login-input {
+    width: 100%;
+  }
+}
 </style>
