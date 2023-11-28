@@ -2,18 +2,10 @@
   <div>
     <div class="title mb-5 mt-2 ms-1 ms-sm-4">
       <h2 class="d-flex align-items-center">
-        <!-- if light -->
         <img
-          v-if="activeTheme === Theme.LIGHT"
-          src="../assets/settings-dark.svg"
-          class="me-3 settings-icon"
-        />
-        <img
-          v-else
           src="../assets/settings-light.svg"
           class="me-3 settings-icon"
         />
-
         {{ $t('settings.title') }}
       </h2>
     </div>
