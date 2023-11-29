@@ -27,5 +27,22 @@
     },
     "cancel": "Cancel",
     "save": "Save"
+  },
+  "register": {
+    "title": "Register!",
+    "login": "Login",
+    "password": "Password",
+    "repeatPassword": "Repeat password",
+    "phoneNumber": "Phone number",
+    "register": "Register",
+    "doYouHaveAccount": "Do you have an account?",
+    "loginNow": "Log in",
+    "errors": {
+      "loginRequired": "Login is required!",
+      "passwordRequired": "Password is required!",
+      "phoneNumberRequired": "Phone number is required!",
+      "passwordsNotMatch": "Passwords do not match!",
+      "loginExists": "Login already exists!"
+    }
   }
 }

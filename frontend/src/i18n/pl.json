@@ -27,5 +27,22 @@
     },
     "cancel": "Anuluj",
     "save": "Zapisz"
+  },
+  "register": {
+    "title": "Zarejestruj się!",
+    "login": "Login",
+    "password": "Hasło",
+    "repeatPassword": "Powtórz hasło",
+    "phoneNumber": "Numer telefonu",
+    "register": "Zarejestruj się",
+    "doYouHaveAccount": "Masz już konto?",
+    "loginNow": "Zaloguj się",
+    "errors": {
+      "loginRequired": "Login jest wymagany!",
+      "passwordRequired": "Hasło jest wymagane!",
+      "phoneNumberRequired": "Numer telefonu jest wymagany!",
+      "passwordsNotMatch": "Hasła nie są takie same!",
+      "loginExists": "Podany login jest już zajęty!"
+    }
   }
 }

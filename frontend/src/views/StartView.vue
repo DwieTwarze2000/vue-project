@@ -24,7 +24,7 @@ const phoneNumber = ref('');
 const router = useRouter();
 
 const call = async (): Promise<void> => {
-  let callData = await defaultPost('call/', {
+  let callData = await defaultPost('call', {
     number: cleanPhoneNumber(phoneNumber.value),
   });
 
