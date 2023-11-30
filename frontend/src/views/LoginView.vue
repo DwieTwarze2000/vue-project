@@ -60,6 +60,7 @@ import { defaultPost } from '../services/api.service';
 import { LoginData, LoginResponse } from '../types/auth.type';
 import { saveToken } from '../utils/auth.utils';
 import { i18n } from '../main';
+import { useStore } from 'vuex';
 
 const passwordVisible = ref(false);
 
@@ -71,6 +72,7 @@ const passwordError = ref('');
 const authError = ref('');
 
 const router = useRouter();
+const store = useStore();
 
 const t = (key: string): string => {
   return i18n.global.t(key).toString();
@@ -106,6 +108,7 @@ const loginToSystem = async (): Promise<void> => {
   }
 
   if (loginResponse) {
+    store.commit('setToken', loginResponse.token);
     saveToken(loginResponse.token);
     router.push({ name: 'start' });
   }

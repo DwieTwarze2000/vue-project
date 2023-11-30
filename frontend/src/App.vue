@@ -63,24 +63,25 @@ import { ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { Theme } from './types/theme.type';
 import { getTheme, setThemeColors } from './utils/theme.utils';
-import { getToken, removeToken } from './utils/auth.utils';
+import { removeToken } from './utils/auth.utils';
 import { defaultPost } from './services/api.service';
 import { LogoutResponse, logoutSuccess } from './types/auth.type';
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 const isLogged = ref(false);
 
-const setIsLogged = (): void => {
-  const token = getToken();
-  if (token) {
-    isLogged.value = true;
-  }
-};
+watchEffect((): void => {
+  const token = store.state.token;
+  isLogged.value = !!token;
+});
 
 const logout = async (): Promise<void> => {
   const response: LogoutResponse = await defaultPost('auth/logout', {}, true);
   if (response.message === logoutSuccess) {
+    store.commit('logout');
     removeToken();
-    isLogged.value = false;
   }
 };
 
@@ -93,7 +94,6 @@ watchEffect((): void => {
 const $route = useRoute();
 
 const showNavigation = (): boolean => {
-  setIsLogged();
   const excludedRoutes = ['/login', '/register'];
   return !excludedRoutes.includes($route.path);
 };

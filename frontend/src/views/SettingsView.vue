@@ -2,10 +2,7 @@
   <div>
     <div class="title mb-5 mt-2 ms-1 ms-sm-4">
       <h2 class="d-flex align-items-center">
-        <img
-          src="../assets/settings-light.svg"
-          class="me-3 settings-icon"
-        />
+        <img src="../assets/settings-light.svg" class="me-3 settings-icon" />
         {{ $t('settings.title') }}
       </h2>
     </div>
@@ -58,59 +55,88 @@
         </tr>
       </table>
 
-      <button class="btn main-button active me-3 mt-4">
-        {{ $t('settings.addUser.title') }}
-      </button>
-      <table>
-        <tr>
-          <td class="prop pe-4">{{ $t('settings.addUser.name') }}:</td>
-          <td>
-            <input type="text" />
-          </td>
-        </tr>
-        <tr>
-          <td class="prop pe-4">{{ $t('settings.addUser.phoneNumber') }}:</td>
-          <td>
-            <input type="text" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button class="btn main-button me-3 cancel">
-              {{ $t('settings.cancel') }}
-            </button>
-          </td>
-          <td class="d-flex">
-            <button class="btn main-button active me-3">
-              {{ $t('settings.save') }}
-            </button>
-          </td>
-        </tr>
-      </table>
-
-      <div class="users d-flex flex-row gap-3 mt-4 flex-wrap">
-        <div class="user p-4 d-flex flex-column text-center">
-          <img
-            v-if="activeTheme === Theme.LIGHT"
-            src="../assets/x-symbol.svg"
-            class="delete"
-          />
-          <img v-else src="../assets/x-symbol_white.svg" class="delete" />
-          <img
-            v-if="activeTheme === Theme.LIGHT"
-            src="../assets/user-dark.svg"
-            alt="user"
-            class="mb-2"
-          />
-          <img v-else src="../assets/user-light.svg" alt="user" class="mb-2" />
-          <p class="mb-2">Jacek</p>
-          <p>532 232 321</p>
+      <div class="mt-4 mb-3 fs-5" v-if="isLogged && user">
+        <div class="d-flex align-items-center gap-4">
+          <div>Ustawienia użytkownika:</div>
+          <button class="btn main-button active me-3">Zapisz ustawienia</button>
         </div>
-        <div class="user p-4 d-flex flex-column text-center">
-          <img src="../assets/x-symbol.svg" class="delete" />
-          <img src="../assets/user-dark.svg" alt="user" class="mb-2" />
-          <p class="mb-2">Paweł</p>
-          <p>532 241 221</p>
+        <div class="mb-3">
+          <label>Login:</label>
+          <input
+            type="text"
+            class="form-control login-input"
+            :value="user.login"
+            disabled
+          />
+        </div>
+        <div class="mb-3">
+          <label>Telefon główny:</label>
+          <input
+            type="text"
+            class="form-control login-input"
+            :value="user.mainPhoneNumber"
+          />
+        </div>
+        <div class="mb-3">
+          <label>Stare hasło:</label>
+          <input type="password" class="form-control login-input" />
+        </div>
+        <div class="mb-3">
+          <label>Nowe hasło:</label>
+          <input type="password" class="form-control login-input" />
+        </div>
+
+        <button class="btn main-button active me-3 mt-4 mb-3">
+          <!-- {{ $t('settings.addUser.title') }} -->
+          Dodaj kolejny numer telefonu
+        </button>
+        <div class="mb-3">
+          <label>Nazwa:</label>
+          <input type="text" class="form-control login-input" />
+        </div>
+        <div class="mb-3">
+          <label>Telefon:</label>
+          <input type="text" class="form-control login-input" />
+        </div>
+        <div
+          class="d-flex flex-column flex-md-row mt-3 text-center text-md-left"
+        >
+          <button class="btn main-button me-3 cancel">Cofnij</button>
+          <button class="btn main-button active me-3">Dodaj</button>
+        </div>
+
+        <div class="users d-flex flex-row gap-3 mt-4 flex-wrap">
+          <div class="user p-4 d-flex flex-column text-center">
+            <img
+              v-if="activeTheme === Theme.LIGHT"
+              src="../assets/x-symbol.svg"
+              class="delete"
+            />
+            <img v-else src="../assets/x-symbol_white.svg" class="delete" />
+            <img
+              v-if="activeTheme === Theme.LIGHT"
+              src="../assets/user-dark.svg"
+              alt="user"
+              class="mb-2"
+            />
+            <img
+              v-else
+              src="../assets/user-light.svg"
+              alt="user"
+              class="mb-2"
+            />
+            <p class="mb-2">Główny</p>
+            <p>514541201</p>
+          </div>
+          <div class="user p-4 d-flex flex-column text-center">
+            <img src="../assets/x-symbol.svg" class="delete" />
+            <img src="../assets/user-dark.svg" alt="user" class="mb-2" />
+            <p class="mb-2">Firek</p>
+            <p>123123123</p>
+          </div>
+        </div>
+        <div class="mt-4 mb-4">
+          <button class="btn main-button cancel me-3">Usuń konto</button>
         </div>
       </div>
     </div>
@@ -123,9 +149,48 @@ import { ref, watchEffect } from 'vue';
 import { Theme } from '../types/theme.type';
 import { Language } from '../types/i18n.type';
 import { i18n } from '../main';
+import { defaultGet } from '../services/api.service';
+import { getToken } from '../utils/auth.utils';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const isLogged = ref(false);
 
 let activeTheme = ref(getTheme());
 let activeLanguage = ref(getLanguage());
+const user = ref(null);
+
+const getUser = async (): Promise<any> => {
+  try {
+    const userData = await defaultGet('auth/user', true);
+
+    if (userData) {
+      return userData;
+    }
+    return null;
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    return null;
+  }
+};
+
+const fetchUser = async () => {
+  const userData = await getUser();
+  if (userData) {
+    user.value = userData;
+  }
+};
+
+watchEffect((): void => {
+  const token = store.state.token;
+  isLogged.value = !!token;
+
+  if (isLogged.value) {
+    fetchUser();
+  } else {
+    user.value = null;
+  }
+});
 
 const setNewTheme = (theme: Theme): void => {
   saveTheme(theme);
@@ -182,5 +247,14 @@ input {
 
 .settings-icon {
   width: 32px;
+}
+
+input:disabled {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+}
+
+label {
+  font-size: 14px;
 }
 </style>

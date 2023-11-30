@@ -6,6 +6,7 @@ import { defaultLocale, messages } from './i18n';
 import { getLanguage } from './utils/language.utils';
 import { Language } from './types/i18n.type';
 import ViewManager from './services/viewManager.service';
+import authStore from './store/auth.store';
 
 export const i18n = createI18n({
   locale: defaultLocale,
@@ -20,4 +21,5 @@ ViewManager.checkStatus();
 const app = createApp(App);
 app.use(router);
 app.use(i18n);
+app.use(authStore);
 app.mount('#app');
