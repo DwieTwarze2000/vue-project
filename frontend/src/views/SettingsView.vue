@@ -110,7 +110,6 @@
           class="btn main-button active me-3 mt-4 mb-3"
           @click="showAddAnotherPhoneForm = !showAddAnotherPhoneForm"
         >
-          <!-- {{ $t('settings.addUser.title') }} -->
           {{ $t('settings.userSettings.addAnotherPhoneNumber') }}
         </button>
         <div v-if="showAddAnotherPhoneForm">
@@ -415,6 +414,7 @@ input {
   width: 15px;
   top: 5px;
   right: 5px;
+  cursor: pointer;
 }
 
 .settings-icon {
