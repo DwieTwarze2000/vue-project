@@ -20,13 +20,22 @@
       "light": "Light",
       "dark": "Dark"
     },
-    "addUser": {
-      "title": "Add user",
-      "name": "Name",
-      "phoneNumber": "Phone number"
-    },
-    "cancel": "Cancel",
-    "save": "Save"
+    "userSettings": {
+      "title": "User settings",
+      "saveSettings": "Save settings",
+      "login": "Login",
+      "mainPhoneNumber": "Main phone number",
+      "oldPassword": "Old password",
+      "newPassword": "New password",
+      "addAnotherPhoneNumber": "Add another phone number",
+      "phoneName": "Name",
+      "phoneNumber": "Phone number",
+      "add": "Add",
+      "main": "Main",
+      "deleteAccount": "Delete account",
+      "doYouWantToDeleteAccount": "Are you sure you want to delete your account?",
+      "savedSettings": "Settings saved!"
+    }
   },
   "register": {
     "title": "Register!",
@@ -53,6 +62,10 @@
     "phoneNumberRequired": "Phone number is required!",
     "passwordsNotMatch": "Passwords do not match!",
     "loginExists": "Login already exists!",
-    "authError": "Login or password are incorrect!"
+    "authError": "Login or password are incorrect!",
+    "nameRequired": "Name is required!",
+    "oldPasswordRequired": "Old password is required!",
+    "newPasswordRequired": "New password is required!",
+    "passwordIncorrect": "Password is incorrect!"
   }
 }

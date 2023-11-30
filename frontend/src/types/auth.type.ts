@@ -46,3 +46,32 @@ export interface LogoutResponse {
   message?: string;
   error?: string;
 }
+
+export interface User {
+  _id: string;
+  login: string;
+  password: string;
+  mainPhoneNumber: string;
+  createdAt: string;
+  phoneNumbers: UserPhones[];
+}
+
+export interface UserData {
+  mainPhoneNumber: string;
+  oldPassword: string;
+  newPassword: string;
+  phoneNumbers: UserPhones[];
+}
+export interface DeleteUserResponse {
+  message?: string;
+  error?: string;
+}
+
+export enum SaveUserError {
+  'INCORRECT_PASSWORD' = 'Wrong password',
+}
+
+export interface PatchUserResponse {
+  error?: string;
+  user: User;
+}

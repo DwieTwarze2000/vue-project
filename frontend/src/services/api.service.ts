@@ -51,3 +51,21 @@ export const defaultDelete = async (
 
   return response.json();
 };
+
+export const defaultPatch = async (
+  endpoint: string,
+  data: any,
+  auth = false
+): Promise<any> => {
+  const token = getToken();
+  const response = await fetch(apiUrl + endpoint, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(auth && token && { Authorization: `Bearer ${token}` }),
+    },
+    body: JSON.stringify(data),
+  });
+
+  return response.json();
+};

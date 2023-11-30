@@ -57,11 +57,13 @@
 
       <div class="mt-4 mb-3 fs-5" v-if="isLogged && user">
         <div class="d-flex align-items-center gap-4">
-          <div>Ustawienia użytkownika:</div>
-          <button class="btn main-button active me-3">Zapisz ustawienia</button>
+          <div>{{ $t('settings.userSettings.title') }}:</div>
+          <button class="btn main-button active me-3" @click="saveSettings()">
+            {{ $t('settings.userSettings.saveSettings') }}
+          </button>
         </div>
         <div class="mb-3">
-          <label>Login:</label>
+          <label> {{ $t('settings.userSettings.login') }}:</label>
           <input
             type="text"
             class="form-control login-input"
@@ -70,20 +72,38 @@
           />
         </div>
         <div class="mb-3">
-          <label>Telefon główny:</label>
+          <label> {{ $t('settings.userSettings.mainPhoneNumber') }}:</label>
           <input
             type="text"
             class="form-control login-input"
-            :value="user.mainPhoneNumber"
+            v-model="mainPhoneNumber"
+            @input="mainPhoneNumber = cleanPhoneNumber($event.target.value)"
           />
+          <div v-if="mainPhoneNumberError" class="error fs-6">
+            {{ mainPhoneNumberError }}
+          </div>
         </div>
         <div class="mb-3">
-          <label>Stare hasło:</label>
-          <input type="password" class="form-control login-input" />
+          <label> {{ $t('settings.userSettings.oldPassword') }}:</label>
+          <input
+            type="password"
+            class="form-control login-input"
+            v-model="oldPassword"
+          />
+          <div v-if="oldPasswordError" class="error fs-6">
+            {{ oldPasswordError }}
+          </div>
         </div>
         <div class="mb-3">
-          <label>Nowe hasło:</label>
-          <input type="password" class="form-control login-input" />
+          <label>{{ $t('settings.userSettings.newPassword') }}:</label>
+          <input
+            type="password"
+            class="form-control login-input"
+            v-model="newPassword"
+          />
+          <div v-if="newPasswordError" class="error fs-6">
+            {{ newPasswordError }}
+          </div>
         </div>
 
         <button
@@ -91,21 +111,41 @@
           @click="showAddAnotherPhoneForm = !showAddAnotherPhoneForm"
         >
           <!-- {{ $t('settings.addUser.title') }} -->
-          Dodaj kolejny numer telefonu
+          {{ $t('settings.userSettings.addAnotherPhoneNumber') }}
         </button>
         <div v-if="showAddAnotherPhoneForm">
           <div class="mb-3">
-            <label>Nazwa:</label>
-            <input type="text" class="form-control login-input" />
+            <label> {{ $t('settings.userSettings.phoneName') }}:</label>
+            <input
+              type="text"
+              class="form-control login-input"
+              v-model="phoneName"
+            />
+            <div v-if="phoneNameError" class="error fs-6">
+              {{ phoneNameError }}
+            </div>
           </div>
           <div class="mb-3">
-            <label>Telefon:</label>
-            <input type="text" class="form-control login-input" />
+            <label> {{ $t('settings.userSettings.phoneNumber') }}:</label>
+            <input
+              type="text"
+              class="form-control login-input"
+              v-model="phoneNumber"
+              @input="phoneNumber = cleanPhoneNumber($event.target.value)"
+            />
+            <div v-if="phoneNumberError" class="error fs-6">
+              {{ phoneNumberError }}
+            </div>
           </div>
           <div
             class="d-flex flex-column flex-md-row mt-3 text-center text-md-left"
           >
-            <button class="btn main-button active me-3">Dodaj</button>
+            <button
+              class="btn main-button active me-3"
+              @click="addAnotherPhone()"
+            >
+              {{ $t('settings.userSettings.add') }}
+            </button>
           </div>
         </div>
         <div class="users d-flex flex-row gap-3 mt-4 flex-wrap">
@@ -122,21 +162,27 @@
               alt="user"
               class="mb-2"
             />
-            <p class="mb-2">Główny</p>
+            <p class="mb-2">{{ $t('settings.userSettings.main') }}</p>
             <p>{{ user.mainPhoneNumber }}</p>
           </div>
 
           <div
             class="user p-4 d-flex flex-column text-center"
-            v-for="phoneData in user.phoneNumbers"
-            :key="phoneData.id"
+            v-for="(phoneData, idx) in phoneNumbers"
+            :key="idx"
           >
             <img
               v-if="activeTheme === Theme.LIGHT"
               src="../assets/x-symbol.svg"
               class="delete"
+              @click="deletePhoneNumber(idx)"
             />
-            <img v-else src="../assets/x-symbol_white.svg" class="delete" />
+            <img
+              v-else
+              src="../assets/x-symbol_white.svg"
+              class="delete"
+              @click="deletePhoneNumber(idx)"
+            />
             <img
               v-if="activeTheme === Theme.LIGHT"
               src="../assets/user-dark.svg"
@@ -155,7 +201,7 @@
         </div>
         <div class="mt-4 mb-4">
           <button class="btn main-button cancel me-3" @click="deleteAccount()">
-            Usuń konto
+            {{ $t('settings.userSettings.deleteAccount') }}
           </button>
         </div>
       </div>
@@ -169,10 +215,22 @@ import { ref, watchEffect } from 'vue';
 import { Theme } from '../types/theme.type';
 import { Language } from '../types/i18n.type';
 import { i18n } from '../main';
-import { defaultDelete, defaultGet } from '../services/api.service';
+import {
+  defaultDelete,
+  defaultGet,
+  defaultPatch,
+  defaultPost,
+} from '../services/api.service';
 import { getToken, removeToken, getUser } from '../utils/auth.utils';
 import { useStore } from 'vuex';
 import { cleanPhoneNumber } from '../utils/phone.utils';
+import {
+  DeleteUserResponse,
+  PatchUserResponse,
+  SaveUserError,
+  User,
+  UserData,
+} from '../types/auth.type';
 
 const store = useStore();
 const isLogged = ref(false);
@@ -182,10 +240,29 @@ const activeLanguage = ref(getLanguage());
 const user = ref(null);
 const showAddAnotherPhoneForm = ref(false);
 
-const fetchUser = async () => {
-  const userData = await getUser();
+const mainPhoneNumber = ref('');
+const mainPhoneNumberError = ref('');
+const oldPassword = ref('');
+const oldPasswordError = ref('');
+const newPassword = ref('');
+const newPasswordError = ref('');
+const phoneNumbers = ref([]);
+
+const phoneName = ref('');
+const phoneNameError = ref('');
+const phoneNumber = ref('');
+const phoneNumberError = ref('');
+
+const t = (key: string): string => {
+  return i18n.global.t(key).toString();
+};
+
+const fetchUser = async (): Promise<void> => {
+  const userData: User = await getUser();
   if (userData) {
     user.value = userData;
+    phoneNumbers.value = userData.phoneNumbers;
+    mainPhoneNumber.value = userData.mainPhoneNumber;
   }
 };
 
@@ -200,6 +277,34 @@ watchEffect((): void => {
   }
 });
 
+const addAnotherPhone = (): void => {
+  phoneNameError.value = '';
+  phoneNumberError.value = '';
+
+  if (!phoneName.value) {
+    phoneNameError.value = t('errors.nameRequired');
+  }
+  if (!phoneNumber.value) {
+    phoneNumberError.value = t('errors.phoneNumberRequired');
+  }
+  if (phoneNameError.value || phoneNumberError.value) {
+    return;
+  }
+
+  phoneNumbers.value.push({
+    name: phoneName.value,
+    number: phoneNumber.value,
+  });
+
+  phoneName.value = '';
+  phoneNumber.value = '';
+  showAddAnotherPhoneForm.value = false;
+};
+
+const deletePhoneNumber = (idx: number): void => {
+  phoneNumbers.value.splice(idx, 1);
+};
+
 const setNewTheme = (theme: Theme): void => {
   saveTheme(theme);
   setThemeColors(theme);
@@ -213,15 +318,62 @@ const setNewLanguage = (language: Language): void => {
 };
 
 const deleteAccount = async (): Promise<void> => {
-  const approved = confirm('Czy na pewno chcesz usunąć konto?');
+  const approved = confirm(t('settings.userSettings.doYouWantToDeleteAccount'));
   if (!approved) {
     return;
   }
-  const response = await defaultDelete('auth/user', true);
-  if (response) {
+  const response: DeleteUserResponse = await defaultDelete('auth/user', true);
+  if (response.message) {
     store.commit('logout');
     removeToken();
   }
+};
+
+const saveSettings = async (): Promise<void> => {
+  mainPhoneNumberError.value = '';
+  oldPasswordError.value = '';
+  newPasswordError.value = '';
+
+  if (!mainPhoneNumber.value) {
+    mainPhoneNumberError.value = t('errors.phoneNumberRequired');
+  }
+  if (!oldPassword.value && newPassword.value) {
+    oldPasswordError.value = t('errors.oldPasswordRequired');
+  }
+  if (!newPassword.value && oldPassword.value) {
+    newPasswordError.value = t('errors.newPasswordRequired');
+  }
+  if (
+    mainPhoneNumberError.value ||
+    oldPasswordError.value ||
+    newPasswordError.value
+  ) {
+    return;
+  }
+
+  const userData: UserData = {
+    mainPhoneNumber: mainPhoneNumber.value,
+    oldPassword: oldPassword.value,
+    newPassword: newPassword.value,
+    phoneNumbers: phoneNumbers.value,
+  };
+
+  const response: PatchUserResponse = await defaultPatch(
+    'auth/user',
+    userData,
+    true
+  );
+
+  if (response.error) {
+    if (response.error === SaveUserError.INCORRECT_PASSWORD) {
+      oldPasswordError.value = t('errors.passwordIncorrect');
+    }
+    return;
+  }
+
+  oldPassword.value = '';
+  newPassword.value = '';
+  alert(t('settings.userSettings.savedSettings'));
 };
 </script>
 <style scoped>

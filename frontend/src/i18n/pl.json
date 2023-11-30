@@ -20,13 +20,22 @@
       "light": "Jasny",
       "dark": "Ciemny"
     },
-    "addUser": {
-      "title": "Dodaj użytkownika",
-      "name": "Imię",
-      "phoneNumber": "Numer telefonu"
-    },
-    "cancel": "Anuluj",
-    "save": "Zapisz"
+    "userSettings": {
+      "title": "Ustawienia użytkownika",
+      "saveSettings": "Zapisz ustawienia",
+      "login": "Login",
+      "mainPhoneNumber": "Telefon główny",
+      "oldPassword": "Stare hasło",
+      "newPassword": "Nowe hasło",
+      "addAnotherPhoneNumber": "Dodaj kolejny numer telefonu",
+      "phoneName": "Nazwa",
+      "phoneNumber": "Numer telefonu",
+      "add": "Dodaj",
+      "main": "Główny",
+      "deleteAccount": "Usuń konto",
+      "doYouWantToDeleteAccount": "Czy na pewno chcesz usunąć konto?",
+      "savedSettings": "Zapisano ustawienia!"
+    }
   },
   "register": {
     "title": "Zarejestruj się!",
@@ -54,6 +63,10 @@
     "phoneNumberRequired": "Numer telefonu jest wymagany!",
     "passwordsNotMatch": "Hasła nie są takie same!",
     "loginExists": "Podany login jest już zajęty!",
-    "authError": "Nazwa użytkownika lub hasło są nieprawidłowe!"
+    "authError": "Nazwa użytkownika lub hasło są nieprawidłowe!",
+    "nameRequired": "Nazwa jest wymagana!",
+    "oldPasswordRequired": "Stare hasło jest wymagane!",
+    "newPasswordRequired": "Nowe hasło jest wymagane!",
+    "passwordIncorrect": "Hasło jest nieprawidłowe!"
   }
 }
