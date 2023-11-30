@@ -36,13 +36,24 @@
     "phoneNumber": "Numer telefonu",
     "register": "Zarejestruj się",
     "doYouHaveAccount": "Masz już konto?",
-    "loginNow": "Zaloguj się",
-    "errors": {
-      "loginRequired": "Login jest wymagany!",
-      "passwordRequired": "Hasło jest wymagane!",
-      "phoneNumberRequired": "Numer telefonu jest wymagany!",
-      "passwordsNotMatch": "Hasła nie są takie same!",
-      "loginExists": "Podany login jest już zajęty!"
-    }
+    "loginNow": "Zaloguj się"
+  },
+  "login": {
+    "title": "Zaloguj się do systemu!",
+    "login": "Login",
+    "password": "Hasło",
+    "loginButton": "Zaloguj się",
+    "doYouHaveAccount": "Nie masz jeszcze konta?",
+    "registerNow": "Zarejestruj się za darmo!",
+    "withoutAccount": "Kontynuuj bez konta"
+  },
+
+  "errors": {
+    "loginRequired": "Login jest wymagany!",
+    "passwordRequired": "Hasło jest wymagane!",
+    "phoneNumberRequired": "Numer telefonu jest wymagany!",
+    "passwordsNotMatch": "Hasła nie są takie same!",
+    "loginExists": "Podany login jest już zajęty!",
+    "authError": "Nazwa użytkownika lub hasło są nieprawidłowe!"
   }
 }

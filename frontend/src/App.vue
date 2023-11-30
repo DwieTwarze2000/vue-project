@@ -17,8 +17,16 @@
           <button
             class="btn main-button active"
             @click="$router.push({ name: 'login' })"
+            v-if="!isLogged"
           >
             {{ $t('navigation.login') }}
+          </button>
+          <button
+            class="btn main-button active"
+            @click="logout()"
+            v-if="isLogged"
+          >
+            {{ $t('navigation.logout') }}
           </button>
           <ul class="navbar-nav ms-auto m-2 d-flex align-items-center">
             <li class="nav-item mx-2 mx-sm-0">
@@ -55,6 +63,26 @@ import { ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { Theme } from './types/theme.type';
 import { getTheme, setThemeColors } from './utils/theme.utils';
+import { getToken, removeToken } from './utils/auth.utils';
+import { defaultPost } from './services/api.service';
+import { LogoutResponse, logoutSuccess } from './types/auth.type';
+
+const isLogged = ref(false);
+
+const setIsLogged = (): void => {
+  const token = getToken();
+  if (token) {
+    isLogged.value = true;
+  }
+};
+
+const logout = async (): Promise<void> => {
+  const response: LogoutResponse = await defaultPost('auth/logout', {}, true);
+  if (response.message === logoutSuccess) {
+    removeToken();
+    isLogged.value = false;
+  }
+};
 
 let activeTheme = ref(getTheme());
 watchEffect((): void => {
@@ -65,6 +93,7 @@ watchEffect((): void => {
 const $route = useRoute();
 
 const showNavigation = (): boolean => {
+  setIsLogged();
   const excludedRoutes = ['/login', '/register'];
   return !excludedRoutes.includes($route.path);
 };
@@ -154,5 +183,12 @@ body {
   .login-input {
     width: 100%;
   }
+}
+
+.error {
+  color: var(--dark-red);
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 4px;
 }
 </style>

@@ -38,15 +38,11 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-userSchema.path('login').validate(async (login) => {
-  const count = await mongoose.models.User.countDocuments({ login });
-  return !count;
-}, 'Login already exists');
-
 userSchema.pre('save', function (next) {
   if (!this.tokenHash) {
     this.tokenHash = crypto.randomBytes(16).toString('hex');
   }
+  next();
 });
 
-export default mongoose.model('User', userSchema);
+export default mongoose.model('User', userSchema, 'user_user');

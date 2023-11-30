@@ -36,13 +36,23 @@
     "phoneNumber": "Telefonnummer",
     "register": "Registrieren",
     "doYouHaveAccount": "Haben Sie ein Konto?",
-    "loginNow": "Jetzt einloggen",
-    "errors": {
-      "loginRequired": "Login ist erforderlich!",
-      "passwordRequired": "Passwort ist erforderlich!",
-      "phoneNumberRequired": "Telefonnummer ist erforderlich!",
-      "passwordsNotMatch": "Passwörter stimmen nicht überein!",
-      "loginExists": "Login existiert bereits!"
-    }
+    "loginNow": "Jetzt einloggen"
+  },
+  "login": {
+    "title": "Anmelden!",
+    "login": "Anmeldung",
+    "password": "Passwort",
+    "loginButton": "Anmelden",
+    "doYouHaveAccount": "Haben Sie ein Konto?",
+    "registerNow": "Jetzt registrieren!",
+    "withoutAccount": "Weiter ohne Konto"
+  },
+  "errors": {
+    "loginRequired": "Login ist erforderlich!",
+    "passwordRequired": "Passwort ist erforderlich!",
+    "phoneNumberRequired": "Telefonnummer ist erforderlich!",
+    "passwordsNotMatch": "Passwörter stimmen nicht überein!",
+    "loginExists": "Login existiert bereits!",
+    "authError": "Login oder Passwort ist falsch!"
   }
 }

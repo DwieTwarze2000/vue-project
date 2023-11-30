@@ -34,13 +34,9 @@ const serverInstance = app.listen(3000, function () {
 
 const io = new Server(serverInstance);
 
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-  })
-  .then(() => {
-    console.log('MongoDB connected');
-  });
+mongoose.connect(process.env.MONGO_URL).then(() => {
+  console.log('MongoDB connected');
+});
 
 app.post('/call', async (req, res) => {
   const number1 = req.body.number;

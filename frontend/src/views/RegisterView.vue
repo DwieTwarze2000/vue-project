@@ -1,5 +1,5 @@
 <template>
-  <div class="register-page">
+  <div class="register-page mt-5">
     <h1 class="text-center title">{{ $t('register.title') }}</h1>
 
     <div class="d-flex flex-column align-items-center mt-4">
@@ -97,7 +97,7 @@ const register = async (): Promise<void> => {
   phoneNumberError.value = '';
 
   if (password.value !== passwordRepeat.value) {
-    passwordRepeatError.value = t('register.errors.passwordsNotMatch');
+    passwordRepeatError.value = t('errors.passwordsNotMatch');
     return;
   }
 
@@ -110,19 +110,19 @@ const register = async (): Promise<void> => {
   let registerResponse: RegisterResponse | RegisterResponseFail =
     await defaultPost('auth/register', registerData);
 
-  if (registerResponse?.message) {
-    if (registerResponse.message.includes(RegisterError.LOGIN_ALREADY_EXISTS)) {
-      loginError.value = t('register.errors.loginExists');
+  if (registerResponse?.error) {
+    if (registerResponse.error.includes(RegisterError.LOGIN_ALREADY_EXISTS)) {
+      loginError.value = t('errors.loginExists');
     }
-    if (registerResponse.message.includes(RegisterError.LOGIN_REQUIRED)) {
-      loginError.value = t('register.errors.loginRequired');
+    if (registerResponse.error.includes(RegisterError.LOGIN_REQUIRED)) {
+      loginError.value = t('errors.loginRequired');
     }
 
-    if (registerResponse.message.includes(RegisterError.PASSWORD_REQUIRED)) {
-      passwordError.value = t('register.errors.passwordRequired');
+    if (registerResponse.error.includes(RegisterError.PASSWORD_REQUIRED)) {
+      passwordError.value = t('errors.passwordRequired');
     }
-    if (registerResponse.message.includes(RegisterError.PHONE_REQUIRED)) {
-      phoneNumberError.value = t('register.errors.phoneNumberRequired');
+    if (registerResponse.error.includes(RegisterError.PHONE_REQUIRED)) {
+      phoneNumberError.value = t('errors.phoneNumberRequired');
     }
     return;
   }
@@ -143,8 +143,6 @@ label {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  margin-top: -10%;
 }
 
 label {
@@ -170,12 +168,5 @@ label {
 
 .register {
   cursor: pointer;
-}
-
-.error {
-  color: var(--dark-red);
-  font-weight: bold;
-  font-size: 12px;
-  margin-top: 4px;
 }
 </style>

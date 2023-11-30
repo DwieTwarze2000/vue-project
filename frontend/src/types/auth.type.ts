@@ -12,7 +12,7 @@ export interface RegisterData {
 }
 
 export interface RegisterResponse {
-  message?: string;
+  error?: string;
   _id: string;
   login: string;
   password: string;
@@ -22,10 +22,27 @@ export interface RegisterResponse {
 }
 
 export interface RegisterResponseFail {
-  message: string;
+  error: string;
 }
 
 export interface UserPhones {
   phoneNumber: string;
   name: string;
+}
+
+export interface LoginData {
+  login: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  error?: string;
+  token: string;
+}
+
+export const logoutSuccess = 'Logout success';
+
+export interface LogoutResponse {
+  message?: string;
+  error?: string;
 }

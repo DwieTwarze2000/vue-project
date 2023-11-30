@@ -36,13 +36,23 @@
     "phoneNumber": "Phone number",
     "register": "Register",
     "doYouHaveAccount": "Do you have an account?",
-    "loginNow": "Log in",
-    "errors": {
-      "loginRequired": "Login is required!",
-      "passwordRequired": "Password is required!",
-      "phoneNumberRequired": "Phone number is required!",
-      "passwordsNotMatch": "Passwords do not match!",
-      "loginExists": "Login already exists!"
-    }
+    "loginNow": "Log in"
+  },
+  "login": {
+    "title": "Log in to the system!",
+    "login": "Login",
+    "password": "Password",
+    "loginButton": "Log in",
+    "doYouHaveAccount": "Don't have an account yet?",
+    "registerNow": "Register for free!",
+    "withoutAccount": "Continue without an account"
+  },
+  "errors": {
+    "loginRequired": "Login is required!",
+    "passwordRequired": "Password is required!",
+    "phoneNumberRequired": "Phone number is required!",
+    "passwordsNotMatch": "Passwords do not match!",
+    "loginExists": "Login already exists!",
+    "authError": "Login or password are incorrect!"
   }
 }
