@@ -31,9 +31,9 @@
           <ul class="navbar-nav ms-auto m-2 d-flex align-items-center">
             <li class="nav-item mx-2 mx-sm-0">
               <router-link
-                :to="{ name: 'start' }"
+                :to="{ name: 'home' }"
                 class="nav-link"
-                :class="{ active: $route.name === 'start' }"
+                :class="{ active: $route.name === 'home' }"
                 >{{ $t('navigation.home') }}</router-link
               >
             </li>
@@ -104,6 +104,10 @@ const showNavigation = (): boolean => {
   --darker-green: #258346;
   --light-red: #f00e0e;
   --dark-red: #af0e0e;
+  --orange: #ff7a00;
+  --dark-orange: #e66e00;
+  --purple: #a12da3;
+  --dark-purple: #7f1f7f;
 }
 
 * {

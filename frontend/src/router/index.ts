@@ -6,10 +6,16 @@ import Answered from '../views/AnsweredView.vue';
 import Settings from '../views/SettingsView.vue';
 import Login from '../views/LoginView.vue';
 import Register from '../views/RegisterView.vue';
+import Home from '../views/HomeView.vue';
 
 const routes = [
   {
     path: '/',
+    name: 'home',
+    component: Home,
+  },
+  {
+    path: '/start',
     name: 'start',
     component: Start,
   },

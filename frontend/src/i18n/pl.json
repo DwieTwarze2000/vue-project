@@ -6,7 +6,19 @@
     "logout": "Wyloguj",
     "login": "Zaloguj"
   },
-
+  "home": {
+    "welcome": "Witaj na naszej stronie!",
+    "welcomeDescription": "Cieszymy się że tu jesteś! Jesteśmy gotowi, bu pomóc Ci w każdej kwestii. Potrzebujesz szybkiej odpowiedzi czy szczegółowych informacji? Nic prostrzego! Kliknij przycisk poniżej i skorzystaj z możliwości skontaktowania się z nami. Jesteśmy tutaj dla Ciebie!",
+    "callUs": "Zadzwoń do nas!",
+    "dontHaveAccount": "Nie masz jeszcze konta?",
+    "dontHaveAccountDescription": "Nie ma problemu! Możesz kontynuować bez rejestracji, ale serdecznie zachęcamy do założenia bezpłatnego konta. Dzięki temu odkryjesz dodatkowe funkcje, takie jak możliwość przeglądania historii rozmów oraz dostosowywanie ustawień do swoich potrzeb!",
+    "createAccount": "Stwórz konto!",
+    "thanksForLoggingIn": "Dziękujemy za zalogowanie do systemu!",
+    "thanksForLogginInDescription": "Życzymy miłego dnia i udanych rozmów! Nie zapomnij odwiedzić karty z ustawieniami, aby dostosować system do swoich potrzeb!",
+    "goToSettings": "Przejdź do ustawień!",
+    "beFirst1": "Zostań",
+    "beFirst2": "osobą, która zamówiła dzisiaj z nami rozmowę!"
+  },
   "settings": {
     "title": "Ustawienia",
     "language": {

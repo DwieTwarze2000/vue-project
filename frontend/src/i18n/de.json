@@ -6,7 +6,19 @@
     "logout": "Abmelden",
     "login": "Anmelden"
   },
-
+  "home": {
+    "welcome": "Willkommen auf unserer Website!",
+    "welcomeDescription": "Wir freuen uns, dass Sie hier sind! Wir sind bereit, Ihnen in jeder Angelegenheit zu helfen. Benötigen Sie eine schnelle Antwort oder detaillierte Informationen? Nichts einfacher! Klicken Sie auf die Schaltfläche unten und nutzen Sie die Möglichkeit, uns zu kontaktieren. Wir sind für dich da!",
+    "callUs": "Rufen Sie uns an!",
+    "dontHaveAccount": "Sie haben noch kein Konto?",
+    "dontHaveAccountDescription": "Kein Problem! Sie können ohne Registrierung fortfahren, aber wir empfehlen Ihnen dringend, ein kostenloses Konto zu erstellen. Auf diese Weise entdecken Sie zusätzliche Funktionen, z. B. die Möglichkeit, den Anrufverlauf anzuzeigen und die Einstellungen an Ihre Bedürfnisse anzupassen!",
+    "createAccount": "Ein Konto erstellen!",
+    "thanksForLoggingIn": "Vielen Dank, dass Sie sich im System angemeldet haben!",
+    "thanksForLogginInDescription": "Wir wünschen Ihnen einen schönen Tag und erfolgreiche Gespräche! Vergessen Sie nicht, den Einstellungs-Tab zu besuchen, um das System an Ihre Bedürfnisse anzupassen!",
+    "goToSettings": "Gehe zu den Einstellungen!",
+    "beFirst1": "Seien Sie die",
+    "beFirst2": "Person, die heute ein Gespräch mit uns bestellt hat!"
+  },
   "settings": {
     "title": "Einstellungen",
     "language": {

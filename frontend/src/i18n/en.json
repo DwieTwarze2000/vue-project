@@ -6,7 +6,19 @@
     "logout": "Logout",
     "login": "Log in"
   },
-
+  "home": {
+    "welcome": "Welcome to our website!",
+    "welcomeDescription": "We are glad you are here! We are ready to help you in any matter. Do you need a quick answer or detailed information? Nothing simpler! Click the button below and take advantage of the opportunity to contact us. We are here for you!",
+    "callUs": "Call us!",
+    "dontHaveAccount": "Don't have an account yet?",
+    "dontHaveAccountDescription": "No problem! You can continue without registration, but we strongly encourage you to create a free account. This way you will discover additional features, such as the ability to view call history and customize settings to your needs!",
+    "createAccount": "Create an account!",
+    "thanksForLoggingIn": "Thank you for logging into the system!",
+    "thanksForLogginInDescription": "We wish you a nice day and successful conversations! Don't forget to visit the settings tab to customize the system to your needs!",
+    "goToSettings": "Go to settings!",
+    "beFirst1": "Be the",
+    "beFirst2": "person who ordered a conversation with us today!"
+  },
   "settings": {
     "title": "Settings",
     "language": {

@@ -40,7 +40,7 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 
 app.post('/call', async (req, res) => {
   const number1 = req.body.number;
-  const number2 = process.env.PHONE_NUMBER; // tutaj dejemy swój numer
+  const number2 = process.env.PHONE_NUMBER;
   const bridge = await dialer.call(number1, number2);
   let oldStatus = null;
   let interval = setInterval(async () => {

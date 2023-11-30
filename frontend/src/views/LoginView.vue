@@ -47,7 +47,7 @@
         {{ $t('login.registerNow') }}</span
       >
     </div>
-    <div class="without-account mt-3" @click="$router.push({ name: 'start' })">
+    <div class="without-account mt-3" @click="$router.push({ name: 'home' })">
       {{ $t('login.withoutAccount') }}
     </div>
   </div>
@@ -110,7 +110,7 @@ const loginToSystem = async (): Promise<void> => {
   if (loginResponse) {
     store.commit('setToken', loginResponse.token);
     saveToken(loginResponse.token);
-    router.push({ name: 'start' });
+    router.push({ name: 'home' });
   }
 };
 
