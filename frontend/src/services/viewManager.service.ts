@@ -12,6 +12,7 @@ class ViewManager {
   }
 
   private static changeView(): void {
+    console.log(this.status);
     switch (this.status) {
       case 'CONNECTED':
         router.push({ name: 'connected' });
@@ -24,6 +25,9 @@ class ViewManager {
         break;
       case 'RINGING':
         router.push({ name: 'ringing' });
+        break;
+      case 'BAD NUMBER':
+        router.push({ name: 'bad-number' });
         break;
     }
   }

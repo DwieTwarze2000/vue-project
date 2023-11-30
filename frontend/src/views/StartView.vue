@@ -1,16 +1,17 @@
 <template>
-  <div>
-    <div class="header clearfix">Zadzwonimy do Ciebie w ciągu 26 sekund.</div>
-    <label class="form-label clearfix" for="form-number">
-      Wprowadź numer
-    </label>
-    <br />
-    <input
-      v-model="phoneNumber"
-      class="form-number clearfix"
-      id="form-number"
-    />
-    <div class="call-button" @click="call()">Zadzwoń teraz</div>
+  <div class="d-flex flex-column align-items-center mt-5">
+    <h1>Zadzwonimy do Ciebie w ciągu kilku sekund!</h1>
+    <div class="mt-4 fs-6">
+      <label for="form-number"> Wprowadź numer </label>
+      <input
+        v-model="phoneNumber"
+        class="form-control login-input"
+        @input="phoneNumber = cleanPhoneNumber($event.target.value)"
+      />
+    </div>
+    <button class="btn main-button mt-4 mb-5 call-us-button" @click="call()">
+      Zadzwoń teraz
+    </button>
   </div>
 </template>
 
@@ -25,9 +26,10 @@ const router = useRouter();
 
 const call = async (): Promise<void> => {
   let callData = await defaultPost('call', {
-    number: cleanPhoneNumber(phoneNumber.value),
+    number: phoneNumber.value,
   });
 
   router.push({ name: 'ringing', params: { callsId: callData.id } });
 };
 </script>
+<style scoped></style>

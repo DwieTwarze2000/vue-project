@@ -7,6 +7,8 @@ import Settings from '../views/SettingsView.vue';
 import Login from '../views/LoginView.vue';
 import Register from '../views/RegisterView.vue';
 import Home from '../views/HomeView.vue';
+import BadNumber from '../views/BadNumberView.vue';
+import Failed from '../views/FailedView.vue';
 
 const routes = [
   {
@@ -50,6 +52,16 @@ const routes = [
     name: 'register',
     component: Register,
     props: true,
+  },
+  {
+    path: '/bad-number',
+    name: 'bad-number',
+    component: BadNumber,
+  },
+  {
+    path: '/failed',
+    name: 'failed',
+    component: Failed,
   },
 ];
 

@@ -195,4 +195,11 @@ body {
   font-size: 12px;
   margin-top: 4px;
 }
+
+.call-us-button {
+  background-color: var(--orange);
+}
+.call-us-button:hover {
+  background-color: var(--dark-orange);
+}
 </style>

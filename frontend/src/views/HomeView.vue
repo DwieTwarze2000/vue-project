@@ -12,7 +12,10 @@
       <span class="fs-3 number fw-bold">1</span> {{ $t('home.beFirst2') }}
     </div>
     <div>
-      <button class="btn main-button mt-3 mb-5 call-us-button">
+      <button
+        class="btn main-button mt-3 mb-5 call-us-button"
+        @click="$router.push({ name: 'start' })"
+      >
         {{ $t('home.callUs') }}
       </button>
     </div>
@@ -69,12 +72,7 @@ watchEffect((): void => {
 .number {
   color: var(--dark-red);
 }
-.call-us-button {
-  background-color: var(--orange);
-}
-.call-us-button:hover {
-  background-color: var(--dark-orange);
-}
+
 .register-button {
   background-color: var(--purple);
 }

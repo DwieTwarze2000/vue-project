@@ -41,29 +41,37 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 app.post('/call', async (req, res) => {
   const number1 = req.body.number;
   const number2 = process.env.PHONE_NUMBER;
-  const bridge = await dialer.call(number1, number2);
-  let oldStatus = null;
-  let interval = setInterval(async () => {
-    let currentStatus = await bridge.getStatus();
-    console.log(currentStatus);
-    if (currentStatus !== oldStatus) {
-      oldStatus = currentStatus;
-      io.emit('status', currentStatus);
-    }
-    if (
-      currentStatus === 'ANSWERED' ||
-      currentStatus === 'FAILED' ||
-      currentStatus === 'BUSY' ||
-      currentStatus === 'NO ANSWER'
-    ) {
-      console.log('stop');
-      clearInterval(interval);
-    }
-  }, 1000);
-  res.json({
-    id: '123',
-    status: bridge.STATUSES.NEW,
-  });
+  try {
+    const bridge = await dialer.call(number1, number2);
+    let oldStatus = null;
+    let interval = setInterval(async () => {
+      let currentStatus = await bridge.getStatus();
+      console.log(currentStatus);
+      if (currentStatus !== oldStatus) {
+        oldStatus = currentStatus;
+        io.emit('status', currentStatus);
+      }
+      if (
+        currentStatus === 'ANSWERED' ||
+        currentStatus === 'FAILED' ||
+        currentStatus === 'BUSY' ||
+        currentStatus === 'NO ANSWER'
+      ) {
+        console.log('stop');
+        clearInterval(interval);
+      }
+    }, 1000);
+    res.json({
+      id: '123',
+      status: bridge.STATUSES.NEW,
+    });
+  } catch (e) {
+    io.emit('status', 'BAD NUMBER');
+    res.json({
+      id: '123',
+      status: 'BAD NUMBER',
+    });
+  }
 });
 
 app.get('/status', async function (req, res) {
