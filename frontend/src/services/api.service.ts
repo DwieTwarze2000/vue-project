@@ -35,3 +35,19 @@ export const defaultGet = async (
 
   return response.json();
 };
+
+export const defaultDelete = async (
+  endpoint: string,
+  auth = false
+): Promise<any> => {
+  const token = getToken();
+  const response = await fetch(apiUrl + endpoint, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(auth && token && { Authorization: `Bearer ${token}` }),
+    },
+  });
+
+  return response.json();
+};

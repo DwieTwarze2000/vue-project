@@ -86,27 +86,51 @@
           <input type="password" class="form-control login-input" />
         </div>
 
-        <button class="btn main-button active me-3 mt-4 mb-3">
+        <button
+          class="btn main-button active me-3 mt-4 mb-3"
+          @click="showAddAnotherPhoneForm = !showAddAnotherPhoneForm"
+        >
           <!-- {{ $t('settings.addUser.title') }} -->
           Dodaj kolejny numer telefonu
         </button>
-        <div class="mb-3">
-          <label>Nazwa:</label>
-          <input type="text" class="form-control login-input" />
+        <div v-if="showAddAnotherPhoneForm">
+          <div class="mb-3">
+            <label>Nazwa:</label>
+            <input type="text" class="form-control login-input" />
+          </div>
+          <div class="mb-3">
+            <label>Telefon:</label>
+            <input type="text" class="form-control login-input" />
+          </div>
+          <div
+            class="d-flex flex-column flex-md-row mt-3 text-center text-md-left"
+          >
+            <button class="btn main-button active me-3">Dodaj</button>
+          </div>
         </div>
-        <div class="mb-3">
-          <label>Telefon:</label>
-          <input type="text" class="form-control login-input" />
-        </div>
-        <div
-          class="d-flex flex-column flex-md-row mt-3 text-center text-md-left"
-        >
-          <button class="btn main-button me-3 cancel">Cofnij</button>
-          <button class="btn main-button active me-3">Dodaj</button>
-        </div>
-
         <div class="users d-flex flex-row gap-3 mt-4 flex-wrap">
           <div class="user p-4 d-flex flex-column text-center">
+            <img
+              v-if="activeTheme === Theme.LIGHT"
+              src="../assets/user-dark.svg"
+              alt="user"
+              class="mb-2"
+            />
+            <img
+              v-else
+              src="../assets/user-light.svg"
+              alt="user"
+              class="mb-2"
+            />
+            <p class="mb-2">Główny</p>
+            <p>{{ user.mainPhoneNumber }}</p>
+          </div>
+
+          <div
+            class="user p-4 d-flex flex-column text-center"
+            v-for="phoneData in user.phoneNumbers"
+            :key="phoneData.id"
+          >
             <img
               v-if="activeTheme === Theme.LIGHT"
               src="../assets/x-symbol.svg"
@@ -125,18 +149,14 @@
               alt="user"
               class="mb-2"
             />
-            <p class="mb-2">Główny</p>
-            <p>514541201</p>
-          </div>
-          <div class="user p-4 d-flex flex-column text-center">
-            <img src="../assets/x-symbol.svg" class="delete" />
-            <img src="../assets/user-dark.svg" alt="user" class="mb-2" />
-            <p class="mb-2">Firek</p>
-            <p>123123123</p>
+            <p class="mb-2">{{ phoneData.name }}</p>
+            <p>{{ phoneData.number }}</p>
           </div>
         </div>
         <div class="mt-4 mb-4">
-          <button class="btn main-button cancel me-3">Usuń konto</button>
+          <button class="btn main-button cancel me-3" @click="deleteAccount()">
+            Usuń konto
+          </button>
         </div>
       </div>
     </div>
@@ -149,30 +169,18 @@ import { ref, watchEffect } from 'vue';
 import { Theme } from '../types/theme.type';
 import { Language } from '../types/i18n.type';
 import { i18n } from '../main';
-import { defaultGet } from '../services/api.service';
-import { getToken } from '../utils/auth.utils';
+import { defaultDelete, defaultGet } from '../services/api.service';
+import { getToken, removeToken, getUser } from '../utils/auth.utils';
 import { useStore } from 'vuex';
+import { cleanPhoneNumber } from '../utils/phone.utils';
 
 const store = useStore();
 const isLogged = ref(false);
 
-let activeTheme = ref(getTheme());
-let activeLanguage = ref(getLanguage());
+const activeTheme = ref(getTheme());
+const activeLanguage = ref(getLanguage());
 const user = ref(null);
-
-const getUser = async (): Promise<any> => {
-  try {
-    const userData = await defaultGet('auth/user', true);
-
-    if (userData) {
-      return userData;
-    }
-    return null;
-  } catch (error) {
-    console.error('Error fetching user data:', error);
-    return null;
-  }
-};
+const showAddAnotherPhoneForm = ref(false);
 
 const fetchUser = async () => {
   const userData = await getUser();
@@ -202,6 +210,18 @@ const setNewLanguage = (language: Language): void => {
   saveLanguage(language);
   i18n.global.locale = language;
   activeLanguage.value = language;
+};
+
+const deleteAccount = async (): Promise<void> => {
+  const approved = confirm('Czy na pewno chcesz usunąć konto?');
+  if (!approved) {
+    return;
+  }
+  const response = await defaultDelete('auth/user', true);
+  if (response) {
+    store.commit('logout');
+    removeToken();
+  }
 };
 </script>
 <style scoped>
