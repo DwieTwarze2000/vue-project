@@ -24,7 +24,10 @@
         {{ $t('home.dontHaveAccountDescription') }}
       </div>
       <div>
-        <button class="btn main-button mt-3 mb-5 register-button">
+        <button
+          class="btn main-button mt-3 mb-5 register-button"
+          @click="$router.push({ name: 'register' })"
+        >
           {{ $t('home.createAccount') }}
         </button>
       </div>
