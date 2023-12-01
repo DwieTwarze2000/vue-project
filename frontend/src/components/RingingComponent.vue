@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column align-items-center mt-5 mb-5">
-    <div class="text">
+    <div class="text fs-4">
       Zaraz nastąpi połączenie z konsultantem
       <span class="saving fs-2"
         ><span>.</span><span>.</span><span>.</span></span
