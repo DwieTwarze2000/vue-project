@@ -19,6 +19,13 @@
     "beFirst1": "Seien Sie die",
     "beFirst2": "Person, die heute ein Gespräch mit uns bestellt hat!"
   },
+  "callUsModal": {
+    "start": {
+      "callUs": "Rufen Sie uns an!",
+      "phoneNumber": "Telefonnummer",
+      "call": "Anruf"
+    }
+  },
   "settings": {
     "title": "Einstellungen",
     "language": {

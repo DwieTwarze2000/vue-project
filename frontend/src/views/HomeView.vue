@@ -12,12 +12,7 @@
       <span class="fs-3 number fw-bold">1</span> {{ $t('home.beFirst2') }}
     </div>
     <div>
-      <button
-        class="btn main-button mt-3 mb-5 call-us-button"
-        @click="$router.push({ name: 'start' })"
-      >
-        {{ $t('home.callUs') }}
-      </button>
+      <app-call-us-modal />
     </div>
     <div v-if="!isLogged">
       <div class="mt-5">

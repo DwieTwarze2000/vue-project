@@ -1,35 +1,13 @@
-import router from '../router';
 import { io, Socket } from 'socket.io-client';
 import { apiUrl } from './api.service';
+import appStore from '@/store/app.store';
+import { CallStatus } from '@/types/call.type';
 
 class ViewManager {
-  static status: string | null;
-  static interval: any;
+  static status: CallStatus;
 
   constructor() {
-    ViewManager.interval = null;
-    ViewManager.status = null;
-  }
-
-  private static changeView(): void {
-    console.log(this.status);
-    switch (this.status) {
-      case 'CONNECTED':
-        router.push({ name: 'connected' });
-        break;
-      case 'FAILED':
-        router.push({ name: 'failed' });
-        break;
-      case 'ANSWERED':
-        router.push({ name: 'answered' });
-        break;
-      case 'RINGING':
-        router.push({ name: 'ringing' });
-        break;
-      case 'BAD NUMBER':
-        router.push({ name: 'bad-number' });
-        break;
-    }
+    ViewManager.status = CallStatus.START;
   }
 
   public static checkStatus(): void {
@@ -39,10 +17,12 @@ class ViewManager {
       transports: ['websocket', 'polling'],
     });
 
-    socket.on('status', (status: string) => {
-      if (status !== this.status) {
+    socket.on('status', (status: CallStatus) => {
+      console.log('status', status);
+      console.log('this.status', ViewManager.status);
+      if (status !== ViewManager.status) {
         this.status = status;
-        this.changeView();
+        appStore.commit('setPhoneCallStatus', status);
       }
     });
   }

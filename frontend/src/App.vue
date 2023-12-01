@@ -108,6 +108,7 @@ const showNavigation = (): boolean => {
   --dark-orange: #e66e00;
   --purple: #a12da3;
   --dark-purple: #7f1f7f;
+  /* --modal-bg-color: linear-gradient(168deg, #00008b 0%, #800080 79.17%); */
 }
 
 * {

@@ -19,6 +19,13 @@
     "beFirst1": "Be the",
     "beFirst2": "person who ordered a conversation with us today!"
   },
+  "callUsModal": {
+    "start": {
+      "callUs": "Call us!",
+      "phoneNumber": "Phone number",
+      "call": "Call"
+    }
+  },
   "settings": {
     "title": "Settings",
     "language": {

@@ -19,6 +19,13 @@
     "beFirst1": "Zostań",
     "beFirst2": "osobą, która zamówiła dzisiaj z nami rozmowę!"
   },
+  "callUsModal": {
+    "start": {
+      "callUs": "Zadzwoń do nas!",
+      "phoneNumber": "Numer telefonu",
+      "call": "Zadzwoń"
+    }
+  },
   "settings": {
     "title": "Ustawienia",
     "language": {
