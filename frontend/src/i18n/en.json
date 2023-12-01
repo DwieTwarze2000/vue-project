@@ -23,7 +23,23 @@
     "start": {
       "callUs": "Call us!",
       "phoneNumber": "Phone number",
-      "call": "Call"
+      "call": "Call",
+      "callAgain": "Call again",
+      "main": "Main"
+    },
+    "answered": {
+      "callEnded": "The call has ended!",
+      "greetings": "Thank you for using our services! We sincerely hope that the conversation met your expectations!",
+      "callTime": "Your call time is:"
+    },
+    "badNumber": "An invalid phone number has been selected!",
+    "busy": "Unfortunately, the number you are calling is busy!",
+    "failed": "Unfortunately, the connection could not be established!",
+    "noAnswer": "Unfortunately, the number you are calling does not answer!",
+    "ringing": "The connection with the consultant will be made shortly",
+    "connected": {
+      "greetings": "Have a nice conversation!",
+      "connecting": "Connecting"
     }
   },
   "settings": {

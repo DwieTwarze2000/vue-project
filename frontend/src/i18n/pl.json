@@ -23,7 +23,23 @@
     "start": {
       "callUs": "Zadzwoń do nas!",
       "phoneNumber": "Numer telefonu",
-      "call": "Zadzwoń"
+      "call": "Zadzwoń",
+      "callAgain": "Zadzwoń ponownie",
+      "main": "Główny"
+    },
+    "answered": {
+      "callEnded": "Połączenie zostało zakończone!",
+      "greetings": "Dziękujemy za skorzystanie z naszych usług! Mamy szczerą nadzieję, że rozmowa spełniła Twoje oczekiwania!",
+      "callTime": "Czas twojej rozmowy to:"
+    },
+    "badNumber": "Został wybrany nieprawidłowy numer telefonu!",
+    "busy": "Niestety, numer, na który dzwonisz jest zajęty!",
+    "failed": "Niestety, nie udało się nawiązać połączenia!",
+    "noAnswer": "Niestety, numer, na który dzwonisz nie odpowiada!",
+    "ringing": "Zaraz nastąpi połączenie z konsultantem",
+    "connected": {
+      "greetings": "Miłej rozmowy!",
+      "connecting": "Trwa połączenie"
     }
   },
   "settings": {

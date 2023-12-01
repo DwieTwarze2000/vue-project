@@ -1,10 +1,10 @@
 <template>
   <div class="d-flex flex-column align-items-center mt-5 mb-5">
     <div class="text fs-4">
-      Niestety, numer, na który dzwonisz nie odpowiada!
+      {{ $t('callUsModal.noAnswer') }}
     </div>
     <button class="mt-4 btn main-button active" @click="callAgain()">
-      Zadzwoń ponownie
+      {{ $t('callUsModal.start.callAgain') }}
     </button>
   </div>
 </template>

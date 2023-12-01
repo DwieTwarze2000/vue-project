@@ -12,7 +12,6 @@ export const formatSeconds = (seconds: number): string => {
   return timeString;
 };
 
-//temp
 export const saveCallDuration = (time: string): void => {
   localStorage.setItem('lastCallDuration', time.toString());
 };

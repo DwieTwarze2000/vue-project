@@ -50,7 +50,7 @@
                     class="number py-2 with-separators"
                     @click="selectPhoneNumber(mainPhoneNumber)"
                   >
-                    Główny - {{ mainPhoneNumber }}
+                    {{ $t('callUsModal.start.main') }} - {{ mainPhoneNumber }}
                   </div>
                   <div
                     class="number py-2 with-separators"

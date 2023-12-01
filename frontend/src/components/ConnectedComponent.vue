@@ -2,9 +2,10 @@
   <div
     class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
   >
-    <h1 class="mb-3">Miłej rozmowy!</h1>
+    <h1 class="mb-3">{{ $t('callUsModal.connected.greetings') }}</h1>
     <div class="text fs-4 mb-3">
-      Trwa połączenie<span class="saving fs-2"
+      {{ $t('callUsModal.connected.connecting') }}
+      <span class="saving fs-2"
         ><span>.</span><span>.</span><span>.</span></span
       >
     </div>

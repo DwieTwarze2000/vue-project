@@ -23,7 +23,23 @@
     "start": {
       "callUs": "Rufen Sie uns an!",
       "phoneNumber": "Telefonnummer",
-      "call": "Anruf"
+      "call": "Anruf",
+      "callAgain": "Rufen Sie erneut an",
+      "main": "Haupt"
+    },
+    "answered": {
+      "callEnded": "Der Anruf wurde beendet!",
+      "greetings": "Vielen Dank, dass Sie unsere Dienste nutzen! Wir hoffen aufrichtig, dass das Gespräch Ihren Erwartungen entsprach!",
+      "callTime": "Ihre Anrufzeit beträgt:"
+    },
+    "badNumber": "Es wurde eine ungültige Telefonnummer ausgewählt!",
+    "busy": "Leider ist die Nummer, die Sie anrufen, besetzt!",
+    "failed": "Leider konnte keine Verbindung hergestellt werden!",
+    "noAnswer": "Leider antwortet die Nummer, die Sie anrufen, nicht!",
+    "ringing": "Die Verbindung zum Berater wird in Kürze hergestellt",
+    "connected": {
+      "greetings": "Haben Sie ein schönes Gespräch!",
+      "connecting": "Verbinden"
     }
   },
   "settings": {

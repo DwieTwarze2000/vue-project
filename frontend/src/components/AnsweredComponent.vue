@@ -1,16 +1,15 @@
 <template>
   <div class="d-flex flex-column text-center align-items-center mt-5 mb-5">
-    <div class="text fs-4">Połączenie zostało zakończone!</div>
+    <div class="text fs-4">{{ $t('callUsModal.answered.callEnded') }}</div>
     <div class="text mt-4 fs-4">
-      Dziękujemy za skorzystanie z naszych usług! Mamy szczerą nadzieję, że
-      rozmowa spełniła Twoje oczekiwania!
+      {{ $t('callUsModal.answered.greetings') }}
     </div>
     <div class="text mt-4 fs-4">
-      Czas twojej rozmowy to:
+      {{ $t('callUsModal.answered.callTime') }}
       <span class="call-duration fs-3">{{ callDuration }}</span>
     </div>
     <button class="mt-4 btn main-button active" @click="callAgain()">
-      Zadzwoń ponownie
+      {{ $t('callUsModal.start.callAgain') }}
     </button>
   </div>
 </template>
