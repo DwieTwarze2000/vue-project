@@ -89,7 +89,7 @@ import { useRouter } from 'vue-router';
 import { defaultPost } from '../services/api.service';
 import { Theme } from '../types/theme.type';
 import { CallStatus } from '../types/call.type';
-import { cleanPhoneNumber } from '../utils/phone.utils';
+import { cleanPhoneNumber, deleteCallDuration } from '../utils/phone.utils';
 
 import { useStore } from 'vuex';
 import { getUser } from '../utils/auth.utils';
@@ -149,6 +149,7 @@ const closeModal = (): void => {
   isOpen.value = false;
   store.commit('setPhoneCallStatus', CallStatus.START);
   status.value = CallStatus.START;
+  deleteCallDuration();
 };
 
 const selectPhoneNumber = (number: string): void => {
