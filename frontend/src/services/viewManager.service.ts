@@ -18,12 +18,8 @@ class ViewManager {
     });
 
     socket.on('status', (status: CallStatus) => {
-      console.log('status', status);
-      console.log('this.status', ViewManager.status);
-      if (status !== ViewManager.status) {
-        this.status = status;
-        appStore.commit('setPhoneCallStatus', status);
-      }
+      ViewManager.status = status;
+      appStore.commit('setPhoneCallStatus', status);
     });
   }
 }
