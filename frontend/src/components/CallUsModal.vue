@@ -92,6 +92,7 @@ import { CallStatus } from '../types/call.type';
 import {
   cleanPhoneNumber,
   deleteCallDuration,
+  deletePhoneNumber,
   savePhoneNumber,
 } from '../utils/phone.utils';
 
@@ -156,6 +157,7 @@ const closeModal = (): void => {
   store.commit('setPhoneCallStatus', CallStatus.START);
   status.value = CallStatus.START;
   deleteCallDuration();
+  deletePhoneNumber();
 };
 
 const selectPhoneNumber = (number: string): void => {

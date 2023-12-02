@@ -9,7 +9,8 @@
 
     <div class="mt-4 fs-5">
       {{ $t('home.beFirst1') }}
-      <span class="fs-3 number fw-bold">1</span> {{ $t('home.beFirst2') }}
+      <span class="fs-3 number fw-bold">{{ todayPhoneCalls + 1 }}</span>
+      {{ $t('home.beFirst2') }}
     </div>
     <div>
       <app-call-us-modal />
@@ -49,15 +50,22 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue';
+import { onMounted, ref, watchEffect } from 'vue';
 import { useStore } from 'vuex';
+import { defaultGet } from '../services/api.service';
 
 const store = useStore();
 const isLogged = ref(false);
+const todayPhoneCalls = ref(0);
 
 watchEffect((): void => {
   const token = store.state.token;
   isLogged.value = !!token;
+});
+
+onMounted(async (): Promise<void> => {
+  const amount: number = await defaultGet('phoneCall/todayAmount');
+  todayPhoneCalls.value = amount;
 });
 </script>
 <style scoped>

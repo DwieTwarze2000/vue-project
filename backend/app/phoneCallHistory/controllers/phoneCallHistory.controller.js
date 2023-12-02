@@ -16,8 +16,9 @@ export const getTodayPhoneCallAmount = async (req, res) => {
         $gte: new Date().setHours(0, 0, 0, 0),
         $lt: new Date().setHours(23, 59, 59, 999),
       },
+      status: 'ANSWERED',
     });
-    return res.json(phoneCalls.length);
+    return res.json(phoneCalls.length || 0);
   } catch (error) {
     return res.status(404).json({ error: 'Nie znaleziono połączeń.' });
   }
