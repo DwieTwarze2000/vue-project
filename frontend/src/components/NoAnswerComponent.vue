@@ -9,12 +9,24 @@
   </div>
 </template>
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { CallStatus } from '../types/call.type';
+import { defaultPost } from '../services/api.service';
+import { CallStatus, phoneCallData } from '../types/call.type';
+import { getPhoneNumber } from '../utils/phone.utils';
 
 const store = useStore();
 
 const callAgain = (): void => {
   store.commit('setPhoneCallStatus', CallStatus.START);
 };
+
+onMounted(async (): Promise<void> => {
+  const phoneCallData: phoneCallData = {
+    phoneNumber: getPhoneNumber(),
+    status: CallStatus.NO_ANSWER,
+  };
+
+  await defaultPost('phoneCall/add', phoneCallData, true);
+});
 </script>
