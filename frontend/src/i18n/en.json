@@ -91,6 +91,18 @@
     "registerNow": "Register for free!",
     "withoutAccount": "Continue without an account"
   },
+  "phoneCallHistory": {
+    "title": "Phone call history",
+    "phoneNumber": "Phone number",
+    "date": "Date",
+    "hour": "Hour",
+    "duration": "Duration",
+    "status": "Status",
+    "success": "Answered",
+    "failed": "Not answered",
+    "busy": "Busy",
+    "noAnswer": "No answer"
+  },
   "errors": {
     "loginRequired": "Login is required!",
     "passwordRequired": "Password is required!",

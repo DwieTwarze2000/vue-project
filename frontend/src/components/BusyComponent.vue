@@ -10,7 +10,7 @@
 import { onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { defaultPost } from '../services/api.service';
-import { CallStatus, phoneCallData } from '../types/call.type';
+import { CallStatus, PhoneCallData } from '../types/call.type';
 import { getPhoneNumber } from '../utils/phone.utils';
 
 const store = useStore();
@@ -20,7 +20,7 @@ const callAgain = (): void => {
 };
 
 onMounted(async (): Promise<void> => {
-  const phoneCallData: phoneCallData = {
+  const phoneCallData: PhoneCallData = {
     phoneNumber: getPhoneNumber(),
     status: CallStatus.BUSY,
   };

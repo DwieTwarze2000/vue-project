@@ -91,6 +91,18 @@
     "registerNow": "Zarejestruj się za darmo!",
     "withoutAccount": "Kontynuuj bez konta"
   },
+  "phoneCallHistory": {
+    "title": "Historia połączeń",
+    "phoneNumber": "Numer telefonu",
+    "date": "Data",
+    "hour": "Godzina",
+    "duration": "Czas trwania",
+    "status": "Status",
+    "success": "Odebrano",
+    "failed": "Nieodebrano",
+    "busy": "Zajęty",
+    "noAnswer": "Brak odpowiedzi"
+  },
 
   "errors": {
     "loginRequired": "Login jest wymagany!",

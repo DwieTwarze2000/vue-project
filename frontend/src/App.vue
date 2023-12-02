@@ -37,7 +37,7 @@
                 >{{ $t('navigation.home') }}</router-link
               >
             </li>
-            <li class="nav-item mx-2 mx-sm-0">
+            <li class="nav-item mx-2 mx-sm-0" v-if="isLogged">
               <router-link
                 :to="{ name: 'phoneCallHistory' }"
                 class="nav-link"

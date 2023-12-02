@@ -9,8 +9,9 @@ export enum CallStatus {
   'NO_ANSWER' = 'NO ANSWER',
 }
 
-export interface phoneCallData {
+export interface PhoneCallData {
   status: CallStatus;
   phoneNumber: string;
+  createdAt?: Date;
   callDuration?: number;
 }

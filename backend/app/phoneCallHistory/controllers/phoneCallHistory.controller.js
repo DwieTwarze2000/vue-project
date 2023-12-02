@@ -2,7 +2,9 @@ import PhoneCall from '../schemas/PhoneCall.schema';
 
 export const getPhoneCallHistory = async (req, res) => {
   try {
-    const phoneCalls = await PhoneCall.find({ user: req.user._id });
+    const phoneCalls = await PhoneCall.find({ user: req.user._id }).sort({
+      createdAt: -1,
+    });
     return res.json(phoneCalls);
   } catch (error) {
     return res.status(404).json({ error: 'Nie znaleziono połączeń.' });

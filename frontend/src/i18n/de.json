@@ -91,6 +91,18 @@
     "registerNow": "Jetzt registrieren!",
     "withoutAccount": "Weiter ohne Konto"
   },
+  "phoneCallHistory": {
+    "title": "Anrufverlauf",
+    "phoneNumber": "Telefonnummer",
+    "date": "Datum",
+    "hour": "Stunde",
+    "duration": "Dauer",
+    "status": "Status",
+    "success": "Beantwortet",
+    "failed": "Nicht beantwortet",
+    "busy": "Besetzt",
+    "noAnswer": "Keine Antwort"
+  },
   "errors": {
     "loginRequired": "Login ist erforderlich!",
     "passwordRequired": "Passwort ist erforderlich!",

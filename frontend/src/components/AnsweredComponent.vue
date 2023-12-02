@@ -17,7 +17,7 @@
 import { onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import { defaultPost } from '../services/api.service';
-import { CallStatus, phoneCallData } from '../types/call.type';
+import { CallStatus, PhoneCallData } from '../types/call.type';
 import {
   deleteCallDuration,
   getCallDuration,
@@ -37,7 +37,7 @@ const callAgain = (): void => {
 onMounted(async (): Promise<void> => {
   callDuration.value = getCallDuration();
 
-  const phoneCallData: phoneCallData = {
+  const phoneCallData: PhoneCallData = {
     phoneNumber: getPhoneNumber(),
     callDuration: getCallDuration(),
     status: CallStatus.ANSWERED,
