@@ -14,19 +14,23 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import { CallStatus } from '../types/call.type';
 import { deleteCallDuration, getCallDuration } from '../utils/phone.utils';
 
 const store = useStore();
 
-const callDuration = ref(getCallDuration());
+const callDuration = ref('00:00:00');
 
 const callAgain = (): void => {
   deleteCallDuration();
   store.commit('setPhoneCallStatus', CallStatus.START);
 };
+
+onMounted((): void => {
+  callDuration.value = getCallDuration();
+});
 </script>
 <style scoped>
 .call-duration {
