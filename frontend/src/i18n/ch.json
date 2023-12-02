@@ -102,7 +102,8 @@
     "success": "已接",
     "failed": "未接",
     "busy": "忙",
-    "noAnswer": "沒有回答"
+    "noAnswer": "沒有回答",
+    "noData": "沒有數據"
   },
   "errors": {
     "loginRequired": "需要登入！",

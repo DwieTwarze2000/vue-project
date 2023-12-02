@@ -88,6 +88,11 @@
               </td>
             </template>
           </tr>
+          <tr v-if="historyData.length === 0">
+            <td colspan="5" class="text-center">
+              {{ $t('phoneCallHistory.noData') }}
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
