@@ -38,9 +38,12 @@
               >
             </li>
             <li class="nav-item mx-2 mx-sm-0">
-              <router-link :to="{ name: 'home' }" class="nav-link">{{
-                $t('navigation.phoneCallHistory')
-              }}</router-link>
+              <router-link
+                :to="{ name: 'phoneCallHistory' }"
+                class="nav-link"
+                :class="{ active: $route.name === 'phoneCallHistory' }"
+                >{{ $t('navigation.phoneCallHistory') }}</router-link
+              >
             </li>
             <li class="nav-item mx-2 mx-sm-0">
               <router-link

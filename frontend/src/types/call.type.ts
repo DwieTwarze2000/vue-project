@@ -8,3 +8,9 @@ export enum CallStatus {
   'BUSY' = 'BUSY',
   'NO_ANSWER' = 'NO ANSWER',
 }
+
+export interface phoneCallData {
+  status: CallStatus;
+  phoneNumber: string;
+  callDuration?: number;
+}

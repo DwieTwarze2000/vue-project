@@ -89,7 +89,11 @@ import { useRouter } from 'vue-router';
 import { defaultPost } from '../services/api.service';
 import { Theme } from '../types/theme.type';
 import { CallStatus } from '../types/call.type';
-import { cleanPhoneNumber, deleteCallDuration } from '../utils/phone.utils';
+import {
+  cleanPhoneNumber,
+  deleteCallDuration,
+  savePhoneNumber,
+} from '../utils/phone.utils';
 
 import { useStore } from 'vuex';
 import { getUser } from '../utils/auth.utils';
@@ -97,8 +101,8 @@ import { User } from '../types/auth.type';
 
 const isOpen = ref(false);
 const store = useStore();
-const phoneNumber = ref('');
 const router = useRouter();
+const phoneNumber = ref('');
 const status = ref(CallStatus.START);
 const canCloseModal = ref(true);
 const isLogged = ref(false);
@@ -108,6 +112,8 @@ const mainPhoneNumber = ref('');
 const phoneNumbers = ref([]);
 
 const call = async (): Promise<void> => {
+  savePhoneNumber(phoneNumber.value);
+  store.commit('setPhoneCallStatus', CallStatus.RINGING);
   await defaultPost('call', {
     number: phoneNumber.value,
   });

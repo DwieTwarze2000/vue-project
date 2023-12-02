@@ -9,21 +9,19 @@
         ><span>.</span><span>.</span><span>.</span></span
       >
     </div>
-    <div class="text fs-2 mt-2">{{ timer }}</div>
+    <div class="text fs-2 mt-2">{{ formatSeconds(timer) }}</div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { formatSeconds, saveCallDuration } from '../utils/phone.utils';
 
-const timer = ref('00:00:00');
+const timer = ref(0);
 const interval = ref(null);
 
 onMounted(() => {
-  let seconds = 0;
   interval.value = setInterval(() => {
-    seconds++;
-    timer.value = formatSeconds(seconds);
+    timer.value++;
   }, 1000);
 });
 

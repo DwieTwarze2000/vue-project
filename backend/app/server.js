@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import d from 'dialer';
 import mongoose from 'mongoose';
 import authRouter from './auth/routes/auth.routes';
-// import phoneCallHistoryRouter from './phoneCallHistory/routes/phoneCallHistory.routes';
+import phoneCallHistoryRouter from './phoneCallHistory/routes/phoneCallHistory.routes';
 
 const dialer = d.Dialer;
 dotenv.config();
@@ -81,4 +81,4 @@ app.get('/status', async function (req, res) {
 });
 
 app.use('/auth', authRouter);
-// app.use('/phoneCall', phoneCallHistoryRouter); 
+app.use('/phoneCall', phoneCallHistoryRouter);

@@ -3,6 +3,7 @@ import Settings from '../views/SettingsView.vue';
 import Login from '../views/LoginView.vue';
 import Register from '../views/RegisterView.vue';
 import Home from '../views/HomeView.vue';
+import PhoneCallHistory from '../views/PhoneCallHistoryView.vue';
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     name: 'register',
     component: Register,
     props: true,
+  },
+  {
+    path: '/phoneCallHistory',
+    name: 'phoneCallHistory',
+    component: PhoneCallHistory,
   },
 ];
 

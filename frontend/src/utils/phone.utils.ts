@@ -12,17 +12,32 @@ export const formatSeconds = (seconds: number): string => {
   return timeString;
 };
 
-export const saveCallDuration = (time: string): void => {
+export const saveCallDuration = (time: number): void => {
   localStorage.setItem('lastCallDuration', time.toString());
 };
 
-export const getCallDuration = (): string => {
+export const getCallDuration = (): number => {
   const time = localStorage.getItem('lastCallDuration');
-  return time ? time : '00:00:00';
+  return time ? parseInt(time) : 0;
 };
 
 export const deleteCallDuration = (): void => {
   if (localStorage.getItem('lastCallDuration')) {
     localStorage.removeItem('lastCallDuration');
+  }
+};
+
+export const savePhoneNumber = (phoneNumber: string): void => {
+  localStorage.setItem('lastPhoneNumber', phoneNumber);
+};
+
+export const getPhoneNumber = (): string => {
+  const phoneNumber = localStorage.getItem('lastPhoneNumber');
+  return phoneNumber ? phoneNumber : '';
+};
+
+export const deletePhoneNumber = (): void => {
+  if (localStorage.getItem('lastPhoneNumber')) {
+    localStorage.removeItem('lastPhoneNumber');
   }
 };
