@@ -26,11 +26,18 @@
               {{ $t('settings.language.english') }}
             </button>
             <button
-              class="btn main-button"
+              class="btn main-button me-3"
               @click="setNewLanguage(Language.DE)"
               :class="{ active: activeLanguage === Language.DE }"
             >
               {{ $t('settings.language.german') }}
+            </button>
+            <button
+              class="btn main-button"
+              @click="setNewLanguage(Language.CH)"
+              :class="{ active: activeLanguage === Language.CH }"
+            >
+              {{ $t('settings.language.chineese') }}
             </button>
           </td>
         </tr>

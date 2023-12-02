@@ -1,0 +1,119 @@
+{
+  "navigation": {
+    "home": "家",
+    "settings": "設定",
+    "phoneCallHistory": "通話記錄",
+    "logout": "登出",
+    "login": "登入"
+  },
+  "home": {
+    "welcome": "歡迎來到我們的網站！",
+    "welcomeDescription": "我們很高興你在這裡！我們隨時準備幫助你。你需要快速的答案或詳細的資訊嗎？沒問題！點擊下面的按鈕，並利用機會與我們聯繫。我們在這裡等你！",
+    "callUs": "打電話給我們！",
+    "dontHaveAccount": "還沒有帳號？",
+    "dontHaveAccountDescription": "沒問題！你可以繼續使用而不註冊，但我們強烈建議你創建一個免費帳號。這樣你就可以發現其他功能，例如查看通話記錄和根據需要自定義設置！",
+    "createAccount": "創建帳號！",
+    "thanksForLoggingIn": "感謝您登錄系統！",
+    "thanksForLogginInDescription": "祝你有愉快的一天和成功的對話！不要忘記訪問設置選項卡，以根據需要自定義系統！",
+    "goToSettings": "前往設定！",
+    "beFirst1": "成為",
+    "beFirst2": "今天與我們訂購對話的人！"
+  },
+  "callUsModal": {
+    "start": {
+      "callUs": "打電話給我們！",
+      "phoneNumber": "電話號碼",
+      "call": "打電話",
+      "callAgain": "再次打電話",
+      "main": "主要"
+    },
+    "answered": {
+      "callEnded": "通話已結束！",
+      "greetings": "感謝您使用我們的服務！我們真誠地希望對話符合您的期望！",
+      "callTime": "您的通話時間是："
+    },
+    "badNumber": "選擇了無效的電話號碼！",
+    "busy": "不幸的是，您撥打的號碼正忙！",
+    "failed": "不幸的是，無法建立連接！",
+    "noAnswer": "不幸的是，您撥打的號碼沒有回應！",
+    "ringing": "與顧問的連接將很快建立",
+    "connected": {
+      "greetings": "祝你有愉快的對話！",
+      "connecting": "連接"
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "language": {
+      "title": "語言",
+      "polish": "波蘭語",
+      "english": "英語",
+      "german": "德語",
+      "chineese": "中文"
+    },
+    "theme": {
+      "title": "主題",
+      "light": "光",
+      "dark": "黑暗"
+    },
+    "userSettings": {
+      "title": "用戶設置",
+      "saveSettings": "保存設置",
+      "login": "登入",
+      "mainPhoneNumber": "主要電話號碼",
+      "oldPassword": "舊密碼",
+      "newPassword": "新密碼",
+      "addAnotherPhoneNumber": "添加另一個電話號碼",
+      "phoneName": "名稱",
+      "phoneNumber": "電話號碼",
+      "add": "加",
+      "main": "主要",
+      "deleteAccount": "刪除帳號",
+      "doYouWantToDeleteAccount": "您確定要刪除帳號嗎？",
+      "savedSettings": "設置已保存！"
+    }
+  },
+  "register": {
+    "title": "註冊！",
+    "login": "登入",
+    "password": "密碼",
+    "repeatPassword": "重複密碼",
+    "phoneNumber": "電話號碼",
+    "register": "註冊",
+    "doYouHaveAccount": "還沒有帳號？",
+    "loginNow": "登入"
+  },
+  "login": {
+    "title": "登入系統！",
+    "login": "登入",
+    "password": "密碼",
+    "loginButton": "登入",
+    "doYouHaveAccount": "還沒有帳號？",
+    "registerNow": "免費註冊！",
+    "withoutAccount": "繼續使用無帳號"
+  },
+  "phoneCallHistory": {
+    "title": "通話記錄",
+    "phoneNumber": "電話號碼",
+    "date": "日期",
+    "hour": "小時",
+    "duration": "持續時間",
+    "status": "狀態",
+    "success": "已接",
+    "failed": "未接",
+    "busy": "忙",
+    "noAnswer": "沒有回答"
+  },
+  "errors": {
+    "loginRequired": "需要登入！",
+    "passwordRequired": "需要密碼！",
+    "phoneNumberRequired": "需要電話號碼！",
+    "passwordsNotMatch": "密碼不匹配！",
+    "loginExists": "登入已存在！",
+    "authError": "登入或密碼不正確！",
+    "nameRequired": "需要名稱！",
+    "oldPasswordRequired": "需要舊密碼！",
+    "newPasswordRequired": "需要新密碼！",
+    "passwordIncorrect": "密碼不正確！"
+  }
+}
