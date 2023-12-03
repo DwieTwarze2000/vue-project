@@ -40,13 +40,6 @@ export interface LoginResponse {
   token: string;
 }
 
-export const logoutSuccess = 'Logout success';
-
-export interface LogoutResponse {
-  message?: string;
-  error?: string;
-}
-
 export interface User {
   _id: string;
   login: string;

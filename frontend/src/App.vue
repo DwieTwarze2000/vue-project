@@ -68,7 +68,6 @@ import { Theme } from './types/theme.type';
 import { getTheme, setThemeColors } from './utils/theme.utils';
 import { removeToken } from './utils/auth.utils';
 import { defaultPost } from './services/api.service';
-import { LogoutResponse, logoutSuccess } from './types/auth.type';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -81,11 +80,9 @@ watchEffect((): void => {
 });
 
 const logout = async (): Promise<void> => {
-  const response: LogoutResponse = await defaultPost('auth/logout', {}, true);
-  if (response.message === logoutSuccess) {
-    store.commit('logout');
-    removeToken();
-  }
+  await defaultPost('auth/logout', {}, true);
+  removeToken();
+  store.commit('logout');
 };
 
 let activeTheme = ref(getTheme());
