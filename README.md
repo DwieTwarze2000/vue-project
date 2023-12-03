@@ -29,4 +29,46 @@ export const apiUrl = 'http://localhost:3000/';
 docker  compose  up  --build
 ```
 
-### now your app should be available on http://localhost:8080
+### now your app should be available on http://localhost:8080/
+
+# what is changed?
+
+### technical changes
+
+- added typescript to frontend
+- changed frontend code to composition api
+- added bootstrap
+- added babel to backend
+- open project in docker
+
+### features
+
+#### authentication
+
+- added login and register
+
+#### settings
+
+- added option to change theme color and language (polish, english, german, chinese)
+- if logged added option to add phone numbers
+- if logged added option to edit profile and delete account
+
+#### home
+
+- calling is now in modal window
+- handling failed, busy, no answered calls
+- handling bad number
+- added call timer
+- if logged added option to select phone numbers from list while selecting phone number to call
+- save call history to mongo db
+- after call, number of today calls is increased
+
+#### call history
+
+- if logged added option to view call history
+- added option to filter call history by status
+
+#### other
+
+- added 404 page when route not found
+- visual changes
