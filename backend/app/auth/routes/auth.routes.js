@@ -15,6 +15,9 @@ const router = express.Router();
 router.post('/register', registerController);
 router.post('/login', loginController);
 router.post('/logout', userAuthorization, logoutController);
+router.post('/check-token', userAuthorization, (req, res) => {
+  res.status(200).json({ message: 'Token is valid' });
+});
 
 router.get('/user', userAuthorization, getUser);
 router.patch('/user', userAuthorization, updateUser);

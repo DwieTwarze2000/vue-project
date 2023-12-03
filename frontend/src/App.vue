@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue';
+import { onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { Theme } from './types/theme.type';
 import { getTheme, setThemeColors } from './utils/theme.utils';
@@ -97,6 +97,19 @@ const showNavigation = (): boolean => {
   const excludedRoutes = ['/login', '/register'];
   return !excludedRoutes.includes($route.path);
 };
+
+onMounted(async (): Promise<void> => {
+  const token: string = store.state.token;
+
+  if (token) {
+    const res = await defaultPost('auth/check-token', {}, true);
+
+    if (res.error) {
+      removeToken();
+      store.commit('logout');
+    }
+  }
+});
 </script>
 <style>
 :root {
