@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="mt-4 mx-2 mx-sm-5">
-      <table>
+      <table class="mb-5">
         <thead>
           <tr>
             <th>{{ $t('phoneCallHistory.phoneNumber') }}</th>

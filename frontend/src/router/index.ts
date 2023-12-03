@@ -4,6 +4,7 @@ import Login from '../views/LoginView.vue';
 import Register from '../views/RegisterView.vue';
 import Home from '../views/HomeView.vue';
 import PhoneCallHistory from '../views/PhoneCallHistoryView.vue';
+import NotFound from '../views/NotFoundView.vue';
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/phoneCallHistory',
     name: 'phoneCallHistory',
     component: PhoneCallHistory,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'notFound',
+    component: NotFound,
   },
 ];
 

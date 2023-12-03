@@ -24,6 +24,7 @@ export const setThemeColors = (theme: Theme): void => {
         '--modal-bg-color',
         'linear-gradient(168deg, #FFA500 0%, #FF69B4 79.17%)'
       );
+
       break;
     case Theme.DARK:
       document.documentElement.style.setProperty(
@@ -35,6 +36,5 @@ export const setThemeColors = (theme: Theme): void => {
         '--modal-bg-color',
         'linear-gradient(168deg, #0a1d50 0%, #4b0082 60%, #800080 100%)'
       );
-      break;
   }
 };
