@@ -29,18 +29,6 @@ export const apiUrl = 'http://localhost:3000/';
 docker compose up --build
 ```
 
-#### or
-
-```bash
-cd backend
-npm i
-npm run devStart
-
-cd frontend
-npm i
-npm run serve
-```
-
 ### now your app should be available on http://localhost:8080/
 
 # what is changed?
