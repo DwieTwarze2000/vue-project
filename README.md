@@ -62,6 +62,7 @@ docker  compose  up  --build
 - if logged added option to select phone numbers from list while selecting phone number to call
 - save call history to mongo db
 - after call, number of today calls is increased
+- prevent inputing letters and special characters to phone number inputs
 
 #### call history
 
