@@ -11,7 +11,6 @@ class ViewManager {
   }
 
   public static checkStatus(): void {
-    console.log('Checking status...');
     const socket: Socket = io(apiUrl, {
       reconnection: false,
       transports: ['websocket', 'polling'],

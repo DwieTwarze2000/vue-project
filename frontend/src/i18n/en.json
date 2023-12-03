@@ -115,6 +115,7 @@
     "nameRequired": "Name is required!",
     "oldPasswordRequired": "Old password is required!",
     "newPasswordRequired": "New password is required!",
-    "passwordIncorrect": "Password is incorrect!"
+    "passwordIncorrect": "Password is incorrect!",
+    "notFound": "Page not found!"
   }
 }

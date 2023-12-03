@@ -59,7 +59,7 @@ const isLogged = ref(false);
 const todayPhoneCalls = ref(0);
 
 watchEffect((): void => {
-  const token = store.state.token;
+  const token: string = store.state.token;
   isLogged.value = !!token;
 });
 

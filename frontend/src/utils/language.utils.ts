@@ -1,6 +1,6 @@
 import { Language } from '@/types/i18n.type';
 
-export const saveLanguage = (language: Language) => {
+export const saveLanguage = (language: Language): void => {
   localStorage.setItem('language', language);
 };
 

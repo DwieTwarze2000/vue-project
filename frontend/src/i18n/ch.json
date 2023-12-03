@@ -115,6 +115,7 @@
     "nameRequired": "需要名稱！",
     "oldPasswordRequired": "需要舊密碼！",
     "newPasswordRequired": "需要新密碼！",
-    "passwordIncorrect": "密碼不正確！"
+    "passwordIncorrect": "密碼不正確！",
+    "notFound": "找不到頁面！"
   }
 }

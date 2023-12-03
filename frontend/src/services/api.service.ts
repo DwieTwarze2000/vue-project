@@ -7,7 +7,7 @@ export const defaultPost = async (
   data: any,
   auth = false
 ): Promise<any> => {
-  const token = getToken();
+  const token: string | null = getToken();
   const response = await fetch(apiUrl + endpoint, {
     method: 'POST',
     headers: {
@@ -24,7 +24,7 @@ export const defaultGet = async (
   endpoint: string,
   auth = false
 ): Promise<any> => {
-  const token = getToken();
+  const token: string | null = getToken();
   const response = await fetch(apiUrl + endpoint, {
     method: 'GET',
     headers: {
@@ -40,7 +40,7 @@ export const defaultDelete = async (
   endpoint: string,
   auth = false
 ): Promise<any> => {
-  const token = getToken();
+  const token: string | null = getToken();
   const response = await fetch(apiUrl + endpoint, {
     method: 'DELETE',
     headers: {
@@ -57,7 +57,7 @@ export const defaultPatch = async (
   data: any,
   auth = false
 ): Promise<any> => {
-  const token = getToken();
+  const token: string | null = getToken();
   const response = await fetch(apiUrl + endpoint, {
     method: 'PATCH',
     headers: {

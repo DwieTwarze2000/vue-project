@@ -2,19 +2,24 @@ import { getToken } from '@/utils/auth.utils';
 import { createStore } from 'vuex';
 import { CallStatus } from '@/types/call.type';
 
-const appStore = createStore({
+interface AppState {
+  token: string | null;
+  phoneCallStatus: CallStatus;
+}
+
+const appStore = createStore<AppState>({
   state: {
     token: getToken(),
     phoneCallStatus: CallStatus.START,
   },
   mutations: {
-    setToken(state, token) {
+    setToken(state: AppState, token: string): void {
       state.token = token;
     },
-    logout(state) {
+    logout(state: AppState): void {
       state.token = null;
     },
-    setPhoneCallStatus(state, status) {
+    setPhoneCallStatus(state: AppState, status: CallStatus): void {
       state.phoneCallStatus = status;
     },
   },

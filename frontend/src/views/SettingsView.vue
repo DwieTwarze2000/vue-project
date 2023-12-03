@@ -273,7 +273,7 @@ const fetchUser = async (): Promise<void> => {
 };
 
 watchEffect((): void => {
-  const token = store.state.token;
+  const token: string = store.state.token;
   isLogged.value = !!token;
 
   if (isLogged.value) {

@@ -19,13 +19,13 @@ import { formatSeconds, saveCallDuration } from '../utils/phone.utils';
 const timer = ref(0);
 const interval = ref(null);
 
-onMounted(() => {
+onMounted((): void => {
   interval.value = setInterval(() => {
     timer.value++;
   }, 1000);
 });
 
-onUnmounted(() => {
+onUnmounted((): void => {
   saveCallDuration(timer.value);
   clearInterval(interval.value);
 });

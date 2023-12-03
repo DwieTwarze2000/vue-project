@@ -122,7 +122,6 @@ const call = async (): Promise<void> => {
 
 watchEffect((): void => {
   status.value = store.state.phoneCallStatus;
-  console.log(status.value, 'stat val');
   if (
     status.value === CallStatus.CONNECTED ||
     status.value === CallStatus.RINGING
@@ -141,7 +140,7 @@ const fetchUser = async (): Promise<void> => {
 };
 
 watchEffect((): void => {
-  const token = store.state.token;
+  const token: string = store.state.token;
   isLogged.value = !!token;
   if (isLogged.value) {
     fetchUser();

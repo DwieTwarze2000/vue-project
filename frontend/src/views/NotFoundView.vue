@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex justify-content-center align-items-center flex-column">
     <div class="errorCode">404</div>
-    <div class="text">Page not found</div>
+    <div class="text">{{ $t('errors.notFound') }}</div>
   </div>
 </template>
 <style scoped>

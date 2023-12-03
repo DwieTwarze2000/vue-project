@@ -76,7 +76,7 @@ const store = useStore();
 const isLogged = ref(false);
 
 watchEffect((): void => {
-  const token = store.state.token;
+  const token: string = store.state.token;
   isLogged.value = !!token;
 });
 

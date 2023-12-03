@@ -116,6 +116,7 @@
     "nameRequired": "Nazwa jest wymagana!",
     "oldPasswordRequired": "Stare hasło jest wymagane!",
     "newPasswordRequired": "Nowe hasło jest wymagane!",
-    "passwordIncorrect": "Hasło jest nieprawidłowe!"
+    "passwordIncorrect": "Hasło jest nieprawidłowe!",
+    "notFound": "Nie odnaleziono strony!"
   }
 }
