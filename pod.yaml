@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-pod
+spec:
+  volumes:
+    - name: config-map-volume
+      configMap:
+        name: app-cm
+    - name: secret-volume
+      secret:
+        secretName: app-secret
+  containers:
+    - name: backend
+      image: backend:1.0.0
+      ports:
+        - containerPort: 3000
+      volumeMounts:
+        - name: config-map-volume
+          mountPath: /app/config
+        - name: secret-volume
+          mountPath: /app/secret
+    - name: frontend
+      image: frontend:1.0.0
+      ports:
+        - containerPort: 8080
+    - name: mongo
+      image: mongo:7.0.4
+      ports:
+        - containerPort: 27017
+      resources:
+        limits:
+          memory: '128Mi'
+          cpu: '500m'
+        requests:
+          memory: '64Mi'
+          cpu: '250m'
