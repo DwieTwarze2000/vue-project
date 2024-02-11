@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-cm
-  labels:
-    app: app-backend-configmap
-data:
-  URL: 'https://uni-call.fcc-online.pl'
-  PHONE_NUMBER: '514541201'

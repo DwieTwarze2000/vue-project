@@ -1,6 +1,6 @@
 import { getToken } from '@/utils/auth.utils';
 
-export const apiUrl = 'http://localhost:3000/';
+export const apiUrl = 'http://localhost:30000/';
 
 export const defaultPost = async (
   endpoint: string,

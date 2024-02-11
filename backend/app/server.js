@@ -14,7 +14,7 @@ dotenv.config();
 const app = express();
 
 const config = {
-  url: process.env.URL,
+  url: 'https://uni-call.fcc-online.pl',
   login: process.env.LOGIN,
   password: process.env.PASSWORD,
 };
@@ -29,11 +29,15 @@ app.use((req, res, next) => {
   next();
 });
 
-const serverInstance = app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+const serverInstance = app.listen(30000, function () {
+  console.log('Example app listening on port 30000!');
 });
 
 const io = new Server(serverInstance);
+
+console.log(process.env.MONGO_URL);
+console.log(process.env.LOGIN);
+console.log(process.env.PASSWORD);
 
 mongoose.connect(process.env.MONGO_URL).then(() => {
   console.log('MongoDB connected');
@@ -41,7 +45,7 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 
 app.post('/call', async (req, res) => {
   const number1 = req.body.number;
-  const number2 = process.env.PHONE_NUMBER;
+  const number2 = '514541201';
   try {
     const bridge = await dialer.call(number1, number2);
     let oldStatus = null;

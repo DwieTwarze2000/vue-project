@@ -1,15 +1,20 @@
-FROM node:18-alpine3.19 as build
+FROM node:18 AS build
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY . .
 
 RUN npm install && npm run build
 
-FROM nginx:1.21.3-alpine
+FROM node:18 AS prod
 
-COPY --from=0 /app/build /usr/share/nginx/html
+WORKDIR /app
 
-EXPOSE 80
+COPY --from=build /app/dist /app
+COPY --from=build /app/package*.json /app
 
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm install http-server -g
+
+EXPOSE 30001
+
+CMD ["http-server", "-o", "index.html", "-p", "30001"]

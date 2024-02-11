@@ -1,4 +1,4 @@
-import PhoneCall from '../schemas/PhoneCall.schema';
+import PhoneCall from '../schemas/phoneCall.schema';
 
 export const getPhoneCallHistory = async (req, res) => {
   try {

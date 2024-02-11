@@ -9,7 +9,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - '30000:30000'
     volumes:
       - ./backend:/app
       - /app/node_modules
@@ -26,7 +26,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - '8080:8080'
+      - '30001:30001'
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -37,11 +37,11 @@ services:
     image: mongo:7.0.4
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_ROOT_DATABASE: admin
     volumes:
       - 'phonecallDb:/data/db'
+    ports:
+      - '27017:27017'
 
 volumes:
   phonecallDb:

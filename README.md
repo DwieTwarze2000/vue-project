@@ -5,13 +5,10 @@
 ### go to /backend and create .env file (see .env.example)
 
 ```bash
-URL="https://url"  #url for dialer config
 LOGIN="login"  #login for dialer config
 PASSWORD="password"  #password for dialer config
 
-PHONE_NUMBER="111222333"  #your phone number
-
-MONGO_URL="mongodb://root:example@mongo/admin"  #mongo db url (see compose.yaml)
+MONGO_URL="mongodb://mongo/admin"  #mongo db url (see compose.yaml)
 TOKEN_SECRET="your secret token"  #secret token for jwt
 ```
 
