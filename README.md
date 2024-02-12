@@ -35,7 +35,7 @@ TOKEN_SECRET="your secret token"  #secret token dla jwt. (Klucz do szyfrowania, 
 ### w przypadku fontendu w katalogu /frontend/src/services/api.service.ts należy ustawić odpowiedni apiUrl który powinien wskazywać na backend. W przypadku dockera i kubernetesa jest on ustawiony tak że nie trzeba go zmieniać.
 
 ```js
-export const apiUrl = 'http://localhost:30001/';
+export const apiUrl = 'http://localhost:30000/';
 ```
 
 ## docker 
