@@ -43,7 +43,7 @@ export const apiUrl = 'http://localhost:30001/';
 Kontenery:
 - frontent
 - backend
-- mongo
+- mongo - baza danych mongodb
 
 użycie dockera
 ```
@@ -53,14 +53,14 @@ aplikacja powinna być dostępna pod adresem http://localhost:30001/
 
 
 ## kubernetes
-backend-secretmap.yml - config dialera i mongo
-backend.yml - definiuje deployment aplikacji backendowej, wskazując na obrazy Docker, skalowanie i inne opcje konfiguracyjne.
-backend-service.yml - określa usługę Kubernetes dla backendu, która umożliwia komunikację i dostęp do podów backendowych.
-frontend.yml -  definiuje deployment aplikacji frontendowej, wskazując na obrazy Docker, skalowanie i inne opcje konfiguracyjne.
-frontend-service.yml  - określa usługę Kubernetes dla frontendu, która umożliwia komunikację i dostęp do podów frontendowych.
-mongo-config.yml - zawiera konfigurację dla instancji MongoDB, taką jak parametry konfiguracyjne bazy danych.
-mongo-service.yml - definiuje usługę Kubernetes dla MongoDB, umożliwiając komunikację i dostęp do instancji MongoDB.
-mongo-statefulset.yml - opisuje StatefulSet dla MongoDB, zarządzając wdrożeniem bazy danych oraz przechowywaniem danych.
+* backend-secretmap.yml  config dialera i mongo
+* backend.yml - definiuje deployment aplikacji backendowej, wskazując na obrazy Docker, skalowanie i inne opcje konfiguracyjne.
+* backend-service.yml - określa usługę Kubernetes dla backendu, która umożliwia komunikację i dostęp do podów backendowych.
+* frontend.yml -  definiuje deployment aplikacji frontendowej, wskazując na obrazy Docker, skalowanie i inne opcje konfiguracyjne.
+* frontend-service.yml  - określa usługę Kubernetes dla frontendu, która umożliwia komunikację i dostęp do podów frontendowych.
+* mongo-config.yml - zawiera konfigurację dla instancji MongoDB, taką jak parametry konfiguracyjne bazy danych.
+* mongo-service.yml - definiuje usługę Kubernetes dla MongoDB, umożliwiając komunikację i dostęp do instancji MongoDB.
+* mongo-statefulset.yml - opisuje StatefulSet dla MongoDB, zarządzając wdrożeniem bazy danych oraz przechowywaniem danych.
 
 ## uruchomienie
 
