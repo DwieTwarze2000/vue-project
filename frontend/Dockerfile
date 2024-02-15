@@ -8,12 +8,12 @@ RUN npm install && npm run build
 
 FROM node:18 AS prod
 
-WORKDIR /app
+WORKDIR /prodApp
 
-COPY --from=build /app/dist /app
-COPY --from=build /app/package*.json /app
+COPY --from=build /app/dist /prodApp
+COPY --from=build /app/package*.json /prodApp
 
-RUN npm install http-server -g
+RUN npm i -g http-server 
 
 EXPOSE 30001
 

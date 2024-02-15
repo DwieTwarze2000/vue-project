@@ -5,6 +5,6 @@ module.exports = defineConfig({
     historyApiFallback: true,
     allowedHosts: 'all',
     host: '0.0.0.0',
-    port: 30001,
+    port: 8080,
   },
 });
